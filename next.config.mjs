@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode:true,
+  reactStrictMode: true,
+  output: 'export', // 👈 This enables static export
 };
 
 export default nextConfig;
