@@ -40,7 +40,7 @@ const Footer = () => {
                   <ul className="list-unstyled">
                     <li className="my-1">
                       <Link href="" className="text-muted">
-                        hello@prompt.com
+                        hello@omaics.com
                       </Link>
                     </li>
                   </ul>
@@ -93,7 +93,7 @@ const Footer = () => {
           <Col md={12}>
             <div className="text-center text-muted">
               <p className="pb-0 mb-0 fs-14 text-center text-muted">
-                {currentYear} © Prompt. All rights reserved. Crafted by <a href={developedByLink}>{developedBy}</a>
+                {currentYear} © Omaics. All rights reserved. Crafted by <a href={developedByLink}>{developedBy}</a>
               </p>
             </div>
           </Col>

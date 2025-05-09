@@ -11,7 +11,7 @@ const Counter = () => {
             <Badge pill bg="" className="badge-soft-info px-2 py-1">
               stats
             </Badge>
-            <h1 className="display-5 fw-medium">Prompt In Numbers</h1>
+            <h1 className="display-5 fw-medium">Omaics In Numbers</h1>
           </Col>
         </Row>
         <Row className="mt-5 text-center">

@@ -15,7 +15,7 @@ const ClientsReview = () => {
       <Container>
         <Row>
           <Col lg={8}>
-            <h4 className="fw-medium pb-3 mt-0">Join 10,000+ other companies who are using Prompt</h4>
+            <h4 className="fw-medium pb-3 mt-0">Join 10,000+ other companies who are using Omaics</h4>
             <ul className="list-inline mt-3 mb-4 mb-lg-0">
               {(brands || []).map((image, idx) => {
               return <li className="list-inline-item me-4 mb-2" key={idx}>

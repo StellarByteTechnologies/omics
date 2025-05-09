@@ -29,7 +29,7 @@ const Hero = () => {
                   </Col>
                 </Row>
                 <p className="text-muted mb-0 pt-2 fs-14">
-                  Already using Prompt? <Link href="/account/login">Log In</Link>
+                  Already using Omaics? <Link href="/account/login">Log In</Link>
                 </p>
               </div>
             </div>

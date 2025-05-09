@@ -37,8 +37,8 @@ const FAQContent = () => {
     question: 'How do I get help with the theme?',
     ans: 'Use our dedicated support email (support@coderthemes.com) to send your issues or feedback.We are here to help anytime.'
   }, {
-    question: 'Will you regularly give updates of Prompt ?',
-    ans: 'Yes, We will update the Prompt regularly. All the future updates would be available without any cost.'
+    question: 'Will you regularly give updates of Omaics ?',
+    ans: 'Yes, We will update the Omaics regularly. All the future updates would be available without any cost.'
   }];
   return <div id="faqContent">
       <Accordion defaultActiveKey="0" className="custom-accordionwitharrow" id="accordionExample">

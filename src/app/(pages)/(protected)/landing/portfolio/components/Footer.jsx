@@ -18,7 +18,7 @@ const Footer = () => {
               </li>
             </ul>
             <p className="mt-2">
-              {currentYear} © Prompt. All rights reserved. Crafted by <a href={developedByLink}>{developedBy}</a>
+              {currentYear} © Omaics. All rights reserved. Crafted by <a href={developedByLink}>{developedBy}</a>
             </p>
           </Col>
         </Row>

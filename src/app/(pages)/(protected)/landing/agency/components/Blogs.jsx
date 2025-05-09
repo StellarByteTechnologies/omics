@@ -59,8 +59,8 @@ const Blogs = ({
       <Container>
         <Row>
           <Col className="text-center">
-            <span className="badge rounded-pill badge-soft-success px-2 py-1">Blog</span>
-            <h1 className="display-5 fw-semibold">Interesting Articles</h1>
+            <span className="badge rounded-pill badge-soft-success px-2 py-1">Case Studies</span>
+            <h1 className="display-5 fw-semibold">Read about what we are building</h1>
           </Col>
         </Row>
         <Row className="mt-5">

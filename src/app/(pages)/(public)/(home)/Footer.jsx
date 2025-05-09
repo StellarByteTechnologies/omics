@@ -23,7 +23,7 @@ const Footer = () => {
               </li>
             </ul>
             <p className="mt-2 fs-14">
-              {currentYear} © Prompt. All rights reserved. Crafted by <a href={developedByLink}>{developedBy}</a>
+              {currentYear} © Omaics. All rights reserved. Crafted by <a href={developedByLink}>{developedBy}</a>
             </p>
             <Image src={logo} height={30} className="mt-2 mb-4" alt="" />
           </Col>

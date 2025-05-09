@@ -26,7 +26,7 @@ const Features = ({
         <Row>
           <Col className="text-center">
             <span className="badge rounded-pill badge-soft-primary px-2 py-1">Features</span>
-            <h1 className="display-4 fw-semibold">Why Choose Prompt</h1>
+            <h1 className="display-4 fw-semibold">Why Choose Omaics</h1>
             <p className="text-secondary mx-auto">A modern design, fresh look and feel</p>
           </Col>
         </Row>

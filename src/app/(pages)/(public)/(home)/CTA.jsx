@@ -9,7 +9,7 @@ const CTA = () => {
             <h1 className="display-4 fw-medium">Start creating delightful user experience</h1>
             <p className="text-muted mx-auto">
               Start working with&nbsp;
-              <span className="text-dark fw-bold">Prompt</span> to create awesome landing pages &amp; websites
+              <span className="text-dark fw-bold">Omaics</span> to create awesome landing pages &amp; websites
             </p>
             <div className="text-center mt-5">
               <Link href="" className="btn btn-primary icons-center gap-1">

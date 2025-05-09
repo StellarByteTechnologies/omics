@@ -10,7 +10,7 @@ const Feature1 = () => {
             <div className="mb-lg-0 mb-4" data-aos="fade-right" data-aos-duration={600}>
               <span className="badge rounded-pill badge-soft-danger px-2 py-1">Free Cloud Account!</span>
               <h1 className="display-5 fw-medium mb-2">Smart auto deployment</h1>
-              <h5 className="fw-normal text-muted mx-auto mt-0 mb-4 pb-3">Prompts automatically deploys your changes on the cloud</h5>
+              <h5 className="fw-normal text-muted mx-auto mt-0 mb-4 pb-3">Omaicss automatically deploys your changes on the cloud</h5>
               <div className="d-flex mb-3">
                 <div className="list-inline-item me-3 flex-shrink-0">
                   <span className="bg-soft-primary avatar avatar-sm rounded-lg icon icon-with-bg icon-xs text-primary">
@@ -79,7 +79,7 @@ const Feature1 = () => {
             <div className="mt-4 mt-lg-0" data-aos="fade-left" data-aos-duration={700}>
               <span className="badge rounded-pill badge-soft-danger px-2 py-1">Auto Sync</span>
               <h1 className="display-5 fw-medium mb-2">AutoSync deployment</h1>
-              <h5 className="fw-normal text-muted mx-auto mt-0 mb-4 pb-3">Prompts automatically sync your scheduled sync configuration</h5>
+              <h5 className="fw-normal text-muted mx-auto mt-0 mb-4 pb-3">Omaicss automatically sync your scheduled sync configuration</h5>
               <div className="d-flex mb-3">
                 <div className="list-inline-item me-3 flex-shrink-0">
                   <span className="bg-soft-primary avatar avatar-sm rounded-lg icon icon-with-bg icon-xs text-primary">

@@ -12,7 +12,7 @@ const Team = ({
             </Badge>
             <h1 className="display-5 fw-medium">Meet Our Team</h1>
             <p className="text-muted mx-auto">
-              Start working with <span className="text-dark fw-bold">Prompt</span> to manage your workforce better.
+              Start working with <span className="text-dark fw-bold">Omaics</span> to manage your workforce better.
             </p>
           </Col>
         </Row>

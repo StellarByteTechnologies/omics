@@ -49,17 +49,17 @@ const features = [{
 const features2 = [{
   image: app2,
   shapes: ['bg-pink-600 bottom-8', 'bg-yellow-300 top-32 end-12'],
-  title: 'Quick Access to Tasks',
+  title: 'No Scale Issues:',
   description: 'Save time and edit like a pro! Yes! you will be able to edit your application on the easy way.'
 }, {
   image: app1,
   shapes: ['bg-red-400 bottom-8', 'bg-green-400 top-24 end-16'],
-  title: 'Create Task Easily',
+  title: 'Early Market Access:',
   description: 'Speedy App provides instant information on thousands of hire and buy products.'
 }, {
   image: app2,
   shapes: ['bg-purple-600 bottom-8 end-0', 'bg-orange-400 top-60'],
-  title: 'Quick Access to Team',
+  title: 'Abundant High-Quality Data:',
   description: 'Save time and edit like a pro! Yes! you will be able to edit your application on the easy way.'
 }];
 export { features, features2 };

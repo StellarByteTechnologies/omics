@@ -1,6 +1,6 @@
 import Navbar from '@/components/layout/Navbar';
 import Hero from './components/Hero';
-import Services from './components/Services';
+import Services from './components/DataAdvantage';
 import { blogPosts, jobDetails, projects, services } from './data';
 import Portfolios from './components/Portfolios';
 import Clients from './components/Clients';

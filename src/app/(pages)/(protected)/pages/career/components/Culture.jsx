@@ -18,7 +18,7 @@ const Culture = () => {
             <span className="badge rounded-pill badge-soft-primary px-2 py-1">Our Beliefs</span>
             <h1 className="display-5 fw-semibold">Our Culture</h1>
             <p className="text-muted mx-auto">
-              At Prompt, We believe in a fully balanced personal and professional life, importance of focus, fun, self-motivation and full
+              At Omaics, We believe in a fully balanced personal and professional life, importance of focus, fun, self-motivation and full
               transparency.
             </p>
           </Col>

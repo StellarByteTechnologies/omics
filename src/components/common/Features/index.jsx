@@ -16,7 +16,7 @@ const Features = () => {
               <span className="badge rounded-pill badge-soft-primary px-2 py-1">Features</span>
               <h1 className="display-5 fw-medium">Better Management. Better Performance</h1>
               <p className="text-muted mx-auto">
-                Start working with <span className="text-primary fw-bold">Prompt</span> to manage your workforce better
+                Start working with <span className="text-primary fw-bold">Omaics</span> to manage your workforce better
               </p>
             </Col>
           </Row>

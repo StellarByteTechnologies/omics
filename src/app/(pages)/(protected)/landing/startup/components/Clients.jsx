@@ -13,7 +13,7 @@ const Clients = () => {
       <Container data-aos="fade-up" data-aos-duration={1000}>
         <Row>
           <Col lg={12} className="text-center">
-            <h4 className="fw-medium pb-3 mt-0">Join 10,000+ companies who trust Prompt.</h4>
+            <h4 className="fw-medium pb-3 mt-0">Join 10,000+ companies who trust Omaics.</h4>
             <ul className="list-inline my-3">
               {brands.map((brand, idx) => <li className="list-inline-item me-4 me-lg-5" key={idx}>
                   <Image src={brand} alt="logo" className="mb-2 mb-xl-0" height={36} />

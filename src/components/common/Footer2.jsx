@@ -54,7 +54,7 @@ const Footer2 = ({
         {socialIcon ? <Row className="text-md-start text-center">
             <Col md={6}>
               <p className="pb-0 mb-0 text-muted">
-                {currentYear} © Prompt. All rights reserved. Crafted by <a href={developedByLink}>{developedBy}</a>
+                {currentYear} © Omaics. All rights reserved. Crafted by <a href={developedByLink}>{developedBy}</a>
               </p>
             </Col>
             <Col md={6} className="text-md-end">
@@ -89,7 +89,7 @@ const Footer2 = ({
           </Row> : <Row>
             <Col className="text-center">
               <p className="pb-0 mb-0 text-muted">
-                {currentYear} © Prompt. All rights reserved. Crafted by <Link href={developedByLink}>{developedBy}</Link>
+                {currentYear} © Omaics. All rights reserved. Crafted by <Link href={developedByLink}>{developedBy}</Link>
               </p>
             </Col>
           </Row>}

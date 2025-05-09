@@ -22,7 +22,7 @@ const CTA = () => {
             <Card className="shadow-none border mb-0 rounded-sm">
               <CardBody>
                 <h3 className="mt-0 fw-semibold">Meet the team</h3>
-                <p>Learn more about us and who all work at Prompt. You will get chance to work with everyone in the team.</p>
+                <p>Learn more about us and who all work at Omaics. You will get chance to work with everyone in the team.</p>
                 <Link href="/pages/contact" className="btn btn-outline-primary mt-4">
                   Meet our team
                 </Link>

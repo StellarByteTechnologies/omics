@@ -16,7 +16,7 @@ const Client = () => {
             </Badge>
             <h1 className="display-5 fw-medium">We are backed by</h1>
             <p className="text-muted mx-auto">
-              100+ clients trust <span className="text-dark fw-bold">Prompt</span> to drive perfomance & engagement.
+              100+ clients trust <span className="text-dark fw-bold">Omaics</span> to drive perfomance & engagement.
             </p>
           </Col>
         </Row>

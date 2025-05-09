@@ -12,7 +12,7 @@ const Hero = () => {
         <Row className="align-items-center">
           <Col lg={6} md={6}>
             <h1 className="hero-title mt-0">
-              Let&apos;s work <span className="highlight highlight-warning d-inline-block">together</span>. Join Prompt!
+              Let&apos;s work <span className="highlight highlight-warning d-inline-block">together</span>. Join Omaics!
             </h1>
             <p className="fs-16 text-muted pt-3 w-75">
               We&apos;re always open for new creative, analytical and technical minds to join our team. Search for the suitable job.

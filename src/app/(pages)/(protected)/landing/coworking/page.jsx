@@ -1,7 +1,7 @@
 import Navbar from '@/components/layout/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
-import Features from './components/Features';
+import Features from './components/RegulatedGradeData';
 import { features, spaceOptions, testimonials } from './data';
 import SpaceOptions from './components/SpaceOptions';
 import Testimonials from './components/Testimonials';

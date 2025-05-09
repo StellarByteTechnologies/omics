@@ -33,7 +33,7 @@ const feedbackTestimonials = [{
 }, {
   name: 'Cersei Lannister',
   position: 'Senior Project Manager',
-  description: 'This app is a truly blessing for all professionals! A day to day project management was never easy for me. But with prompt, I can manage more than 100 projects easily.',
+  description: 'This app is a truly blessing for all professionals! A day to day project management was never easy for me. But with Omaics, I can manage more than 100 projects easily.',
   image: avatar2
 }];
 const FAQContent = [{
@@ -46,8 +46,8 @@ const FAQContent = [{
   title: ' How do I get help with the theme?',
   description: ' Use our dedicated support email (support@coderthemes.com) to send your issues or feedback. We are here to help anytime. '
 }, {
-  title: ' Will you regularly give updates of Prompt ?',
-  description: ' Yes, We will update the Prompt regularly. All the future updates would be available without any cost. '
+  title: ' Will you regularly give updates of Omaics ?',
+  description: ' Yes, We will update the Omaics regularly. All the future updates would be available without any cost. '
 }];
 const plans = [{
   id: 1,
@@ -112,7 +112,7 @@ const features = [{
 }, {
   avatar: 'fe:user-plus',
   title: 'Hiring & Onboarding',
-  description: 'Post your job, interview candidates and make offers, all on Prompt. Start hiring today.',
+  description: 'Post your job, interview candidates and make offers, all on Omaics. Start hiring today.',
   variant: 'success',
   containerClass: 'd-flex border-bottom py-4'
 }, {

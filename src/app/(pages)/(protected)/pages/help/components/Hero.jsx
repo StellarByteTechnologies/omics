@@ -7,7 +7,7 @@ const Hero = () => {
           <Col lg={7} className="text-center">
             <h1 className="hero-title">How can we help?</h1>
             <p className="fs-17 text-muted">
-              Explore our knowledge badge to learn more about all the functionality Prompt is offering. If you don&apos;t find what you are looking,
+              Explore our knowledge badge to learn more about all the functionality Omaics is offering. If you don&apos;t find what you are looking,
               feel free to contact our support team.
             </p>
             <div className="mt-5">

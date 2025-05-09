@@ -60,9 +60,9 @@ const Features1 = () => {
         <Row>
           <Col className="text-center">
             <span className="badge rounded-pill badge-soft-primary px-2 py-1">Features</span>
-            <h1 className="display-5 fw-semibold">App works best with Prompt</h1>
+            <h1 className="display-5 fw-semibold">App works best with Omaics</h1>
             <p className="text-muted mx-auto">
-              Start working with <span className="text-primary fw-bold">Prompt</span> to showcase your app to thousands of people.
+              Start working with <span className="text-primary fw-bold">Omaics</span> to showcase your app to thousands of people.
             </p>
           </Col>
         </Row>

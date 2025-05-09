@@ -37,7 +37,7 @@ const Footer3 = () => {
         <Row className="text-md-start text-center">
           <Col md={6}>
             <p className="pb-0 mb-0 text-muted">
-              {currentYear} © Prompt. All rights reserved. Crafted by{' '}
+              {currentYear} © Omaics. All rights reserved. Crafted by{' '}
               <Link target="_blank" href={developedByLink}>
                 {developedBy}
               </Link>

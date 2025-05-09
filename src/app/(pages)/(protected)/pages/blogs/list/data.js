@@ -51,8 +51,8 @@ const postData2 = [{
     variant: 'success',
     value: 'Tutorial'
   },
-  title: 'What you should know before considering the Prompt',
-  description: 'We are giving a pretty extensive guideline and context before you make your decision to consider Prompt...'
+  title: 'What you should know before considering the Omaics',
+  description: 'We are giving a pretty extensive guideline and context before you make your decision to consider Omaics...'
 }, {
   image: crypto1,
   tag: {

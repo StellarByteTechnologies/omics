@@ -10,7 +10,7 @@ const CTA = () => {
           <Col>
             <h1 className="display-5 fw-medium">Start offering your users a better experience</h1>
             <p className="text-muted mx-auto">
-              Start working with <span className="text-primary fw-bold">Prompt</span> to showcase your app to thousands of people.
+              Start working with <span className="text-primary fw-bold">Omaics</span> to showcase your app to thousands of people.
             </p>
             <div className="text-center mt-5">
               <Link href="" className="d-block d-sm-inline-flex">

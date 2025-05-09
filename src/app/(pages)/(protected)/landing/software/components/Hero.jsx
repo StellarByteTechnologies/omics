@@ -13,7 +13,7 @@ const Hero = () => {
                 Speed up your <span className="highlight highlight-warning d-inline-block">performance</span>
               </h1>
               <p className="fs-16 mt-3 text-muted">
-                Prompt makes it easier to build better website and application more quickly and with less effort
+                Omaics makes it easier to build better website and application more quickly and with less effort
               </p>
               <div className="py-5">
                 <Dropdown as={ButtonGroup}>

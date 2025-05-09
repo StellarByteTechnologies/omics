@@ -15,7 +15,7 @@ const Footer = () => {
             </Link>
             <div>
               <p className="mt-3 mb-1 text-dark">At vero eos et accusamus et iusto dignissimos ducimus odio.</p>
-              <p className="mt-lg-5 pt-4 mb-lg-0 mb-4 text-dark">Prompt {currentYear}. All rights reserved.</p>
+              <p className="mt-lg-5 pt-4 mb-lg-0 mb-4 text-dark">Omaics {currentYear}. All rights reserved.</p>
             </div>
           </Col>
           <Col lg={7} className="offset-lg-1">

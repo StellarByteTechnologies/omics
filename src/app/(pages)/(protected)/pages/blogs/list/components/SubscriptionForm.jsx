@@ -17,7 +17,7 @@ const SubscriptionForm = () => {
   });
   return <div className="border rounded px-4 py-3">
       <div className="mb-4">
-        <h4 className="mt-0">Get the latest on product development from Prompt</h4>
+        <h4 className="mt-0">Get the latest on product development from Omaics</h4>
         <p className="text-muted">We send a weekly newsletter containing latest updates in product development</p>
       </div>
       <form onSubmit={handleSubmit(() => {})}>

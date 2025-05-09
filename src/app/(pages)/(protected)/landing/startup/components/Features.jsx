@@ -12,7 +12,7 @@ const Features = () => {
               <span className="badge rounded-pill badge-soft-danger px-2 py-1">Feature</span>
               <h1 className="display-4 fw-medium mb-3">Automate everything</h1>
               <p className="text-muted mx-auto mb-4 pb-3">
-                You don&apos;t need to manully follow up with your visitors. The Prompt takes care of it and follow up automatically with them to
+                You don&apos;t need to manully follow up with your visitors. The Omaics takes care of it and follow up automatically with them to
                 understand their needs
               </p>
               <Button variant="outline-primary">
@@ -34,7 +34,7 @@ const Features = () => {
             <div className="mt-4 mt-lg-0">
               <h1 className="display-4 fw-medium mb-3">Auto-tune your marketing campaigns</h1>
               <p className="text-muted mx-auto mb-4 pb-3">
-                The prompts keeps an eye on your all marketting effort and auto tune the marketing campaigns settings to make them perform better
+                The Omaicss keeps an eye on your all marketting effort and auto tune the marketing campaigns settings to make them perform better
               </p>
               <Button variant="outline-primary">
                 Learn more <IconifyIcon className="icon-xxs ms-1" icon="lucide:arrow-right" />

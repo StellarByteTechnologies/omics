@@ -17,7 +17,7 @@ const Clients = () => {
             <span className="badge rounded-pill badge-soft-primary px-2 py-1">Clients</span>
             <h1 className="display-5 fw-medium">The smart people management you need</h1>
             <p className="text-muted mx-auto">
-              21,000+ organizations trust <span className="text-primary fw-bold">Prompt</span> to drive perfomance &amp; engagement
+              21,000+ organizations trust <span className="text-primary fw-bold">Omaics</span> to drive perfomance &amp; engagement
             </p>
             <ul className="list-inline mt-5">
               {brands.map((brand, idx) => <li className="list-inline-item mx-4 mx-xl-5 mb-3" key={idx}>

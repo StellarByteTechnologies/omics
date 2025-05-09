@@ -22,7 +22,7 @@ const Footer4 = () => {
           </Col>
           <Col md="auto" className="text-md-end mt-2 mt-md-0">
             <p className="fs-14 mb-0">
-              {currentYear} © Prompt. All rights reserved. Crafted by <a href={developedByLink}>{developedBy}</a>
+              {currentYear} © Omaics. All rights reserved. Crafted by <a href={developedByLink}>{developedBy}</a>
             </p>
           </Col>
         </Row>

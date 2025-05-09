@@ -9,7 +9,7 @@ const Stats = () => {
         <Row>
           <Col className="text-center">
             <span className="badge rounded-pill badge-soft-primary px-2 py-1">Stats</span>
-            <h1 className="display-5 fw-medium">Prompt In Numbers</h1>
+            <h1 className="display-5 fw-medium">Omaics In Numbers</h1>
             <p className="text-muted mx-auto" />
           </Col>
         </Row>

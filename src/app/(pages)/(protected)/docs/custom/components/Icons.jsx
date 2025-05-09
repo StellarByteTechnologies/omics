@@ -67,7 +67,7 @@ const IconExample = () => {
           Icons
         </CardTitle>
         <p className="sub-header">
-          Prompt comes with icon library:{' '}
+          Omaics comes with icon library:{' '}
           <a href="https://icon-sets.iconify.design/lucide/?keyword=lucide" target="_blank" rel="noreferrer">
             Lucide Icons
           </a>
