@@ -145,7 +145,8 @@ const RegulatedGradeData = () => {
       <Container className="pt-1 pb-1">
         <Row>
           <Col className="text-center">
-            <span className="badge rounded-pill badge-soft-orange px-2 py-1">Section 5</span>
+            <span className="badge rounded-pill badge-soft-orange px-2 py-1">Validated
+</span>
             <h1 className="display-5 fw-semibold text-dark mt-1 mb-2">Regulated-Grade and Quality Data</h1>
           </Col>
         </Row>

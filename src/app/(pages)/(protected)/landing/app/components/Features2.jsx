@@ -35,7 +35,8 @@ const Features2 = () => {
       <Container className="position-relative" style={{ zIndex: 2 }}>
         <Row className="justify-content-center mb-5">
           <Col lg={9} className="text-center">
-            <span className="badge rounded-pill bg-primary-subtle text-primary px-3 py-2 fs-6">Section 6</span>
+            <span className="badge rounded-pill bg-primary-subtle text-primary px-3 py-2 fs-6">Geodiverse
+</span>
             <h2 className="display-5 fw-bold mt-3 mb-3">Advantage of Data from India, Africa, and the Middle East</h2>
             <p className="text-muted fs-5 mb-0">
               Leveraging data from <span className="text-primary fw-bold">diverse and populous</span> regions unlocks unique benefits for healthcare AI advancement

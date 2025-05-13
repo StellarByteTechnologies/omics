@@ -1,7 +1,7 @@
-'use client'
-import { Col, Container, Row } from 'react-bootstrap';
+'use client';
+
+import { Container, Row, Col } from 'react-bootstrap';
 import Image from 'next/image';
-import { useEffect, useRef } from 'react';
 
 //images
 import amazon from '@/assets/images/brands/amazon.svg';
@@ -12,106 +12,145 @@ import shopify from '@/assets/images/brands/shopify.svg';
 
 const Clients = () => {
   const clients = [amazon, google, paypal, spotify, shopify];
-  const logoContainerRef = useRef(null);
-  
-  // Animation for logos moving from left to right in an infinite loop
-  useEffect(() => {
-    const container = logoContainerRef.current;
-    if (!container) return;
-    
-    let position = 0;
-    const speed = 0.5;
-    const logoWidth = container.scrollWidth / 2;  // Half because we duplicated the logos
-    
-    const animate = () => {
-      position -= speed; // Moving left to right means container moves right to left
-      
-      // Reset position once first set of logos is out of view
-      if (Math.abs(position) >= logoWidth) {
-        position = 0;
-      }
-      
-      container.style.transform = `translateX(${position}px)`;
-      requestAnimationFrame(animate);
-    };
-    
-    const animation = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(animation);
-  }, []);
-
-  // Testimonial data
-  const testimonials = [
-    {
-      quote: "Working with this team transformed our digital presence completely. Their attention to detail and innovative approach exceeded our expectations.",
-      author: "Sarah Johnson",
-      position: "CMO at TechGlobal"
-    },
-    {
-      quote: "The results speak for themselves. Our conversion rate increased by 45% within just two months of implementing their recommendations.",
-      author: "Michael Chen",
-      position: "Founder, Innovate Solutions"
-    },
-    {
-      quote: "Their expertise and professionalism made our collaboration seamless. I couldn't be happier with the outcome.",
-      author: "Elena Rodriguez",
-      position: "Director of Marketing, Horizon Enterprises"
-    }
-  ];
 
   return (
-    <section className="section py-5 py-sm-8 bg-light position-relative">
-      <div className="divider top d-none d-sm-block" />
-      <Container>
-        <Row className="py-4">
-          <Col lg={12} className="text-center mb-5">
-            <span className="badge rounded-pill badge-soft-orange px-3 py-2 mb-3">Testimonials</span>
-            <h1 className="display-5 fw-semibold mb-2">What Our Clients Say</h1>
-            <p className="text-muted mx-auto" style={{ maxWidth: '650px' }}>Hear from the companies that have transformed their business with our solutions</p>
+    <section className="client-section position-relative py-6" style={{ 
+      background: "linear-gradient(to right, #1e3a8a, #1e293b, #0f172a)",
+      overflow: "hidden"
+    }}>
+      {/* Modern UI elements */}
+      <div className="position-absolute top-0 start-0 w-100 h-100 d-none d-md-block">
+        <svg width="100%" height="100%" style={{ position: 'absolute', opacity: 0.1 }}>
+          <pattern id="grid-pattern" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="1"></path>
+          </pattern>
+          <rect width="100%" height="100%" fill="url(#grid-pattern)"></rect>
+        </svg>
+      </div>
+      
+      <div className="position-absolute" style={{
+        width: "300px",
+        height: "300px",
+        background: "radial-gradient(circle, rgba(59,130,246,0.1) 0%, rgba(59,130,246,0) 70%)",
+        borderRadius: "50%",
+        top: "-150px",
+        right: "-50px"
+      }}></div>
+      
+      <Container className="position-relative" style={{ zIndex: 2 }}>
+        <Row className="justify-content-center mb-5">
+          <Col md={8} lg={6} className="text-center">
+            <div className="label-container mb-3">
+              <span className="badge px-3 py-2 rounded-pill" style={{ 
+                background: "rgba(59, 130, 246, 0.15)",
+                backdropFilter: "blur(10px)",
+                color: "#fff",
+                fontSize: "0.85rem",
+                letterSpacing: "0.5px",
+                border: "1px solid rgba(59, 130, 246, 0.3)"
+              }}>TRUSTED WORLDWIDE</span>
+            </div>
+            
+            <h2 className="display-5 fw-bold text-white mb-3" style={{ letterSpacing: "-0.02em" }}>Partners we work with</h2>
+            
+            <p className="text-white-50 mb-0" style={{ fontSize: "1.1rem" }}>
+              Industry leaders who trust our solutions
+            </p>
           </Col>
         </Row>
         
-        {/* Testimonials */}
-        <Row className="justify-content-center mb-5 g-4">
-          {testimonials.map((testimonial, idx) => (
-            <Col lg={4} md={6} key={idx}>
-              <div className="testimonial-card p-4 p-lg-5 rounded shadow bg-white h-100 transition-hover" 
-                style={{ borderLeft: '4px solid #FF6B35', transition: 'all 0.3s ease' }}>
-                <div className="quote-mark mb-3 text-orange">
-                  <svg width="42" height="36" viewBox="0 0 42 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M16.9127 0L0 16.9127V36H19.0873V16.9127H6.3497L19.0873 4.1751V0H16.9127ZM38.8254 0L21.9127 16.9127V36H41V16.9127H28.2624L41 4.1751V0H38.8254Z" fill="#FF6B35" fillOpacity="0.5"/>
-                  </svg>
-                </div>
-                <p className="mb-4 lead fs-5">{testimonial.quote}</p>
-                <div className="testimonial-author d-flex align-items-center mt-4">
-                  <div className="author-avatar me-3 rounded-circle bg-soft-orange d-flex align-items-center justify-content-center" 
-                    style={{ width: '50px', height: '50px', fontSize: '18px', fontWeight: 'bold', color: '#FF6B35' }}>
-                    {testimonial.author.charAt(0)}
-                  </div>
-                  <div>
-                    <h5 className="mb-1 fw-bold">{testimonial.author}</h5>
-                    <p className="text-muted mb-0 small">{testimonial.position}</p>
-                  </div>
-                </div>
-              </div>
-            </Col>
-          ))}
-        </Row>
-        
-        {/* Client logos with animation */}
-        <Row className="mt-5">
-          <Col lg={12} className="mb-5">
-            <div className="logo-section bg-white rounded shadow-sm py-4">
-              <h5 className="text-center text-secondary mb-4">Trusted by leading companies worldwide</h5>
-              <div className="logos-container" style={{ position: 'relative', height: '80px', overflow: 'hidden' }}>
-                <div 
-                  ref={logoContainerRef} 
-                  className="logos-slider d-flex align-items-center"
-                  style={{ position: 'absolute', width: '200%' }}
-                >
-                  {/* Duplicate logos for continuous animation */}
-                  {[...clients, ...clients, ...clients].map((client, idx) => (
-                    <div key={idx} className="mx-5 logo-item">
-                      <Image src={client} alt="client logo" height={45} />
+        <Row className="justify-content-center mb-4">
+          <Col xs={12}>
+            <div className="client-container position-relative">
+              {/* Left gradient fade */}
+              <div className="position-absolute top-0 start-0 h-100" style={{
+                width: "100px",
+                background: "linear-gradient(to right, #1e3a8a, transparent)",
+                zIndex: 3
+              }}></div>
+              
+              {/* Right gradient fade */}
+              <div className="position-absolute top-0 end-0 h-100" style={{
+                width: "100px",
+                background: "linear-gradient(to left, #0f172a, transparent)",
+                zIndex: 3
+              }}></div>
+              
+              {/* Modern client logo track */}
+              <div className="logo-track-container overflow-hidden">
+                <div className="logo-track d-flex">
+                  {/* First set of logos */}
+                  {clients.map((client, idx) => (
+                    <div key={idx} className="logo-item mx-4">
+                      <div className="logo-card" style={{
+                        background: "rgba(255, 255, 255, 0.03)",
+                        backdropFilter: "blur(8px)",
+                        borderRadius: "16px",
+                        padding: "1.75rem 2.5rem",
+                        border: "1px solid rgba(255, 255, 255, 0.05)",
+                        boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
+                        transition: "all 0.3s ease"
+                      }}>
+                        <Image 
+                          src={client} 
+                          alt="client logo" 
+                          height={36} 
+                          style={{ 
+                            filter: 'brightness(0) invert(1)',
+                            opacity: 0.9
+                          }} 
+                        />
+                      </div>
+                    </div>
+                  ))}
+                  
+                  {/* Duplicate logos for seamless loop */}
+                  {clients.map((client, idx) => (
+                    <div key={`dup-${idx}`} className="logo-item mx-4">
+                      <div className="logo-card" style={{
+                        background: "rgba(255, 255, 255, 0.03)",
+                        backdropFilter: "blur(8px)",
+                        borderRadius: "16px",
+                        padding: "1.75rem 2.5rem",
+                        border: "1px solid rgba(255, 255, 255, 0.05)",
+                        boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
+                        transition: "all 0.3s ease"
+                      }}>
+                        <Image 
+                          src={client} 
+                          alt="client logo" 
+                          height={36} 
+                          style={{ 
+                            filter: 'brightness(0) invert(1)',
+                            opacity: 0.9
+                          }} 
+                        />
+                      </div>
+                    </div>
+                  ))}
+                  
+                  {/* Triplicate for buffer */}
+                  {clients.map((client, idx) => (
+                    <div key={`tri-${idx}`} className="logo-item mx-4">
+                      <div className="logo-card" style={{
+                        background: "rgba(255, 255, 255, 0.03)",
+                        backdropFilter: "blur(8px)",
+                        borderRadius: "16px",
+                        padding: "1.75rem 2.5rem",
+                        border: "1px solid rgba(255, 255, 255, 0.05)",
+                        boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
+                        transition: "all 0.3s ease"
+                      }}>
+                        <Image 
+                          src={client} 
+                          alt="client logo" 
+                          height={36} 
+                          style={{ 
+                            filter: 'brightness(0) invert(1)',
+                            opacity: 0.9
+                          }} 
+                        />
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -120,7 +159,52 @@ const Clients = () => {
           </Col>
         </Row>
       </Container>
-      <div className="divider bottom d-none d-sm-block" />
+      
+      {/* Modern dot pattern at bottom */}
+      <div className="position-absolute bottom-0 start-0 w-100 d-none d-md-block" style={{ height: "80px", overflow: "hidden" }}>
+        <svg width="100%" height="80" viewBox="0 0 1000 80" preserveAspectRatio="none">
+          <pattern id="dot-pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+            <circle cx="3" cy="3" r="1.5" fill="rgba(255,255,255,0.2)" />
+          </pattern>
+          <rect width="100%" height="100%" fill="url(#dot-pattern)" />
+        </svg>
+      </div>
+      
+      <style jsx>{`
+        .py-6 {
+          padding-top: 5rem;
+          padding-bottom: 5rem;
+        }
+        
+        .logo-track-container {
+          overflow: hidden;
+          position: relative;
+          padding: 1rem 0;
+        }
+        
+        .logo-track {
+          display: flex;
+          animation: scroll 30s linear infinite;
+          width: fit-content;
+        }
+        
+        .logo-card:hover {
+          transform: translateY(-5px);
+          background: rgba(255, 255, 255, 0.06);
+          box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        @keyframes scroll {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-33.33%); }
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+          .logo-track {
+            animation: none;
+          }
+        }
+      `}</style>
     </section>
   );
 };

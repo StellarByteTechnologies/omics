@@ -83,7 +83,7 @@ const DataAdvantageCard = ({ advantage, index }) => {
         </div>
         
         {/* Learn more link */}
-        <div className="mt-auto" style={{ transform: 'translateZ(15px)' }}>
+        {/* <div className="mt-auto" style={{ transform: 'translateZ(15px)' }}>
           <a href="#" className="text-decoration-none text-primary d-inline-flex align-items-center" 
              style={{
                padding: '8px 16px',
@@ -101,7 +101,7 @@ const DataAdvantageCard = ({ advantage, index }) => {
              }}>
             Learn more <FaArrowRight className="ms-2" size={12} />
           </a>
-        </div>
+        </div> */}
       </CardBody>
     </Card>
   );

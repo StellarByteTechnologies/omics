@@ -318,38 +318,12 @@ const DataBook = () => {
               </div>
               
               <div className="p-4">
-                {/* Updated content with specified records */}
+                {/* Updated content with specified records sorted in descending order */}
                 <div className="mb-4">
                   <p className="mb-3">Detailed therapeutic-area-specific collections:</p>
                   
                   <ul className="list-unstyled">
-                    {/* Oncology */}
-                    <li className="mb-4">
-                      <div className="d-flex justify-content-between align-items-center mb-2">
-                        <span className="fs-5 fw-medium text-dark">Oncology</span>
-                        <span className="badge text-white" style={{backgroundColor: "#3182CE", padding: "0.5rem 0.75rem"}}>
-                          77k+ records
-                        </span>
-                      </div>
-                      <div className="progress rounded" style={{height: "10px", backgroundColor: 'rgba(0,0,0,0.05)'}}>
-                        <div 
-                          className="therapeutic-progress"
-                          role="progressbar"
-                          style={{ 
-                            width: '0%',
-                            height: '100%',
-                            background: 'linear-gradient(90deg, #3182CE99 0%, #3182CE 100%)',
-                            transition: 'width 1.2s cubic-bezier(0.34, 1.56, 0.64, 1)'
-                          }}
-                          data-value="90%"
-                          aria-valuenow="0"
-                          aria-valuemin="0"
-                          aria-valuemax="100"
-                        ></div>
-                      </div>
-                    </li>
-                    
-                    {/* Cardiology */}
+                    {/* Cardiology - 1.5M records */}
                     <li className="mb-4">
                       <div className="d-flex justify-content-between align-items-center mb-2">
                         <span className="fs-5 fw-medium text-dark">Cardiology</span>
@@ -367,7 +341,7 @@ const DataBook = () => {
                             background: 'linear-gradient(90deg, #E53E3E99 0%, #E53E3E 100%)',
                             transition: 'width 1.2s cubic-bezier(0.34, 1.56, 0.64, 1)'
                           }}
-                          data-value="75%"
+                          data-value="100%"
                           aria-valuenow="0"
                           aria-valuemin="0"
                           aria-valuemax="100"
@@ -375,59 +349,7 @@ const DataBook = () => {
                       </div>
                     </li>
                     
-                    {/* Neurology */}
-                    <li className="mb-4">
-                      <div className="d-flex justify-content-between align-items-center mb-2">
-                        <span className="fs-5 fw-medium text-dark">Neurology</span>
-                        <span className="badge text-white" style={{backgroundColor: "#805AD5", padding: "0.5rem 0.75rem"}}>
-                          100k+ records
-                        </span>
-                      </div>
-                      <div className="progress rounded" style={{height: "10px", backgroundColor: 'rgba(0,0,0,0.05)'}}>
-                        <div 
-                          className="therapeutic-progress"
-                          role="progressbar"
-                          style={{ 
-                            width: '0%',
-                            height: '100%',
-                            background: 'linear-gradient(90deg, #805AD599 0%, #805AD5 100%)',
-                            transition: 'width 1.2s cubic-bezier(0.34, 1.56, 0.64, 1)'
-                          }}
-                          data-value="60%"
-                          aria-valuenow="0"
-                          aria-valuemin="0"
-                          aria-valuemax="100"
-                        ></div>
-                      </div>
-                    </li>
-                    
-                    {/* Rare Diseases */}
-                    <li className="mb-4">
-                      <div className="d-flex justify-content-between align-items-center mb-2">
-                        <span className="fs-5 fw-medium text-dark">Rare Diseases</span>
-                        <span className="badge text-white" style={{backgroundColor: "#38A169", padding: "0.5rem 0.75rem"}}>
-                          15k+ records
-                        </span>
-                      </div>
-                      <div className="progress rounded" style={{height: "10px", backgroundColor: 'rgba(0,0,0,0.05)'}}>
-                        <div 
-                          className="therapeutic-progress"
-                          role="progressbar"
-                          style={{ 
-                            width: '0%',
-                            height: '100%',
-                            background: 'linear-gradient(90deg, #38A16999 0%, #38A169 100%)',
-                            transition: 'width 1.2s cubic-bezier(0.34, 1.56, 0.64, 1)'
-                          }}
-                          data-value="35%"
-                          aria-valuenow="0"
-                          aria-valuemin="0"
-                          aria-valuemax="100"
-                        ></div>
-                      </div>
-                    </li>
-                    
-                    {/* Metabolic Disorders */}
+                    {/* Metabolic Disorders - 1.5M records */}
                     <li className="mb-4">
                       <div className="d-flex justify-content-between align-items-center mb-2">
                         <span className="fs-5 fw-medium text-dark">Metabolic Disorders</span>
@@ -445,7 +367,85 @@ const DataBook = () => {
                             background: 'linear-gradient(90deg, #DD6B2099 0%, #DD6B20 100%)',
                             transition: 'width 1.2s cubic-bezier(0.34, 1.56, 0.64, 1)'
                           }}
-                          data-value="75%"
+                          data-value="100%"
+                          aria-valuenow="0"
+                          aria-valuemin="0"
+                          aria-valuemax="100"
+                        ></div>
+                      </div>
+                    </li>
+                    
+                    {/* Neurology - 100k+ records */}
+                    <li className="mb-4">
+                      <div className="d-flex justify-content-between align-items-center mb-2">
+                        <span className="fs-5 fw-medium text-dark">Neurology</span>
+                        <span className="badge text-white" style={{backgroundColor: "#805AD5", padding: "0.5rem 0.75rem"}}>
+                          100k+ records
+                        </span>
+                      </div>
+                      <div className="progress rounded" style={{height: "10px", backgroundColor: 'rgba(0,0,0,0.05)'}}>
+                        <div 
+                          className="therapeutic-progress"
+                          role="progressbar"
+                          style={{ 
+                            width: '0%',
+                            height: '100%',
+                            background: 'linear-gradient(90deg, #805AD599 0%, #805AD5 100%)',
+                            transition: 'width 1.2s cubic-bezier(0.34, 1.56, 0.64, 1)'
+                          }}
+                          data-value="65%"
+                          aria-valuenow="0"
+                          aria-valuemin="0"
+                          aria-valuemax="100"
+                        ></div>
+                      </div>
+                    </li>
+
+                    {/* Oncology - 77k+ records */}
+                    <li className="mb-4">
+                      <div className="d-flex justify-content-between align-items-center mb-2">
+                        <span className="fs-5 fw-medium text-dark">Oncology</span>
+                        <span className="badge text-white" style={{backgroundColor: "#3182CE", padding: "0.5rem 0.75rem"}}>
+                          77k+ records
+                        </span>
+                      </div>
+                      <div className="progress rounded" style={{height: "10px", backgroundColor: 'rgba(0,0,0,0.05)'}}>
+                        <div 
+                          className="therapeutic-progress"
+                          role="progressbar"
+                          style={{ 
+                            width: '0%',
+                            height: '100%',
+                            background: 'linear-gradient(90deg, #3182CE99 0%, #3182CE 100%)',
+                            transition: 'width 1.2s cubic-bezier(0.34, 1.56, 0.64, 1)'
+                          }}
+                          data-value="50%"
+                          aria-valuenow="0"
+                          aria-valuemin="0"
+                          aria-valuemax="100"
+                        ></div>
+                      </div>
+                    </li>
+                    
+                    {/* Rare Diseases - 15k+ records */}
+                    <li className="mb-4">
+                      <div className="d-flex justify-content-between align-items-center mb-2">
+                        <span className="fs-5 fw-medium text-dark">Rare Diseases</span>
+                        <span className="badge text-white" style={{backgroundColor: "#38A169", padding: "0.5rem 0.75rem"}}>
+                          15k+ records
+                        </span>
+                      </div>
+                      <div className="progress rounded" style={{height: "10px", backgroundColor: 'rgba(0,0,0,0.05)'}}>
+                        <div 
+                          className="therapeutic-progress"
+                          role="progressbar"
+                          style={{ 
+                            width: '0%',
+                            height: '100%',
+                            background: 'linear-gradient(90deg, #38A16999 0%, #38A169 100%)',
+                            transition: 'width 1.2s cubic-bezier(0.34, 1.56, 0.64, 1)'
+                          }}
+                          data-value="25%"
                           aria-valuenow="0"
                           aria-valuemin="0"
                           aria-valuemax="100"
