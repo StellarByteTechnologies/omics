@@ -6,13 +6,11 @@ const DataBook = () => {
   // Animation states
   const [animate, setAnimate] = useState(false);
   const [sectionsInView, setSectionsInView] = useState({
-    therapeutic: false,
-    genomic: false
+    therapeutic: false
   });
   
   // References for scroll detection
   const therapeuticRef = useRef(null);
-  const genomicRef = useRef(null);
   
   // Set animation after component mount and handle scroll animations
   useEffect(() => {
@@ -40,27 +38,6 @@ const DataBook = () => {
               }, 300);
             });
           }
-          
-          if (entry.target.id === 'genomic-section') {
-            setSectionsInView(prev => ({...prev, genomic: true}));
-            
-            // Animate genomic progress bar
-            const genomicBar = document.querySelector('.genomic-progress');
-            if (genomicBar) {
-              setTimeout(() => {
-                genomicBar.style.width = genomicBar.getAttribute('data-value');
-              }, 300);
-            }
-            
-            // Animate particles
-            const particles = document.querySelectorAll('.genetic-particle');
-            particles.forEach((particle, i) => {
-              setTimeout(() => {
-                particle.style.opacity = '0.7';
-                particle.style.transform = 'scale(1)';
-              }, 100 * i);
-            });
-          }
         }
       });
     };
@@ -70,12 +47,10 @@ const DataBook = () => {
     
     // Observe sections
     if (therapeuticRef.current) observer.observe(therapeuticRef.current);
-    if (genomicRef.current) observer.observe(genomicRef.current);
     
     // Cleanup
     return () => {
       if (therapeuticRef.current) observer.unobserve(therapeuticRef.current);
-      if (genomicRef.current) observer.unobserve(genomicRef.current);
     };
   }, []);
 
@@ -121,8 +96,8 @@ const DataBook = () => {
         {/* Header Section */}
         <Row className={`mb-5 text-center ${animate ? 'animate__animated animate__fadeIn' : ''}`}>
           <Col>
-            <span className="badge rounded-pill badge-soft-orange px-3 py-2 mb-3">Section 3</span>
-            <h1 className="display-5 fw-semibold">Data Book: Explore Our Datasets</h1>
+            <span className="badge rounded-pill badge-soft-orange px-3 py-2 mb-3">Data Book</span>
+            <h1 className="display-5 fw-semibold">Explore Our Datasets</h1>
             <div className="mx-auto bg-primary" 
               style={{
                 width: '100px', 
@@ -134,60 +109,158 @@ const DataBook = () => {
           </Col>
         </Row>
 
-        {/* Main Data Banner */}
+        {/* Main Data Banner with Asian Map + Genomics Layer */}
         <Row className={`mb-5 ${animate ? 'animate__animated animate__fadeInUp animate__delay-1s' : ''}`}>
           <Col>
             <div className="bg-white rounded-lg shadow overflow-hidden border border-light">
-              <div className="text-center p-5">
-                <h2 className="fw-bold mb-1 text-dark">All data solutions. One Place.</h2>
-                <h3 className="display-6 text-secondary fw-normal">Global impact.</h3>
+              {/* Main Banner with Asia Map and Genomics Visualization */}
+              <div className="position-relative overflow-hidden" style={{ height: "400px" }}>
+                {/* Gradient background */}
+                <div className="position-absolute w-100 h-100" style={{
+                  background: "linear-gradient(135deg, #3182CE 0%, #4299E1 35%, #63B3ED 100%)",
+                  zIndex: 1
+                }}></div>
                 
-                {/* AI Pattern Background for Main Stats */}
-                <div className="rounded-lg overflow-hidden shadow-lg mt-4 mb-4 position-relative"
-                  style={{
-                    backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 800 400'%3E%3Cdefs%3E%3CradialGradient id='a' cx='396' cy='281' r='514' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%235d80b6'/%3E%3Cstop offset='1' stop-color='%23395685'/%3E%3C/radialGradient%3E%3ClinearGradient id='b' gradientUnits='userSpaceOnUse' x1='400' y1='148' x2='400' y2='333'%3E%3Cstop offset='0' stop-color='%23ffffff' stop-opacity='0.3'/%3E%3Cstop offset='1' stop-color='%23ffffff' stop-opacity='0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23a)' width='800' height='400'/%3E%3Cg fill-opacity='0.15'%3E%3Ccircle fill='%23ffffff' cx='267.5' cy='61' r='5'/%3E%3Ccircle fill='%23ffffff' cx='429.8' cy='200.5' r='6'/%3E%3Ccircle fill='%23ffffff' cx='156.4' cy='237.8' r='4'/%3E%3Ccircle fill='%23ffffff' cx='501.5' cy='105.4' r='5'/%3E%3Ccircle fill='%23ffffff' cx='374.5' cy='139.2' r='6'/%3E%3Ccircle fill='%23ffffff' cx='596.9' cy='228.1' r='4'/%3E%3Ccircle fill='%23ffffff' cx='320.3' cy='266.5' r='5'/%3E%3Ccircle fill='%23ffffff' cx='190.2' cy='70.3' r='4'/%3E%3C/g%3E%3Cg stroke='%23ffffff' stroke-width='1' stroke-opacity='0.2'%3E%3Cline x1='267.5' y1='61' x2='429.8' y2='200.5'/%3E%3Cline x1='429.8' y1='200.5' x2='156.4' y2='237.8'/%3E%3Cline x1='156.4' y1='237.8' x2='501.5' y2='105.4'/%3E%3Cline x1='501.5' y1='105.4' x2='374.5' y2='139.2'/%3E%3Cline x1='374.5' y1='139.2' x2='596.9' y2='228.1'/%3E%3Cline x1='596.9' y1='228.1' x2='320.3' y2='266.5'/%3E%3Cline x1='320.3' y1='266.5' x2='190.2' y2='70.3'/%3E%3Cline x1='190.2' y1='70.3' x2='267.5' y2='61'/%3E%3C/g%3E%3C/svg%3E")`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    padding: '40px',
-                  }}
-                >
-                  <div className="position-relative z-index-1 text-white p-4">
-                    <h4 className="fw-bold mb-4">World Leading Healthcare Data Network</h4>
+                {/* Asia Map SVG with improved styling */}
+                <div className="position-absolute w-100 h-100" style={{ zIndex: 2, opacity: 0.15 }}>
+                  <svg width="100%" height="100%" viewBox="0 0 900 450" preserveAspectRatio="xMidYMid slice">
+                    {/* India */}
+                    <path d="M400,280 Q410,250 430,240 T470,220 T480,180 Q470,150 450,140 Q440,135 430,140 Q400,150 390,170 Q380,190 370,240 Q380,260 400,280Z" 
+                      fill="#ffffff" opacity="0.2" stroke="#ffffff" strokeWidth="1"/>
                     
-                    <div className="mb-4">
-                      <span className="display-1 fw-bold" 
-                        style={{ 
-                          color: '#ffffff',
-                          transition: 'all 0.3s ease',
-                          textShadow: '0 0 10px rgba(255,255,255,0.3)'
-                        }}
-                      >50M+</span>
-                    </div>
+                    {/* Southeast Asia */}
+                    <path d="M500,260 Q520,240 530,220 Q540,200 550,190 Q560,180 570,190 Q580,210 575,240 Q570,270 540,290 Q520,300 500,280 Q490,270 500,260Z" 
+                      fill="#ffffff" opacity="0.2" stroke="#ffffff" strokeWidth="1"/>
                     
-                    <p className="lead px-lg-5 mx-lg-5">
-                      Patient, health, and multi-omic datasets for research,<br />
-                      drug development, and clinical trials
-                    </p>
+                    {/* China */}
+                    <path d="M480,180 Q500,160 530,150 Q550,145 580,150 Q600,160 620,180 Q630,200 620,220 Q600,240 570,240 Q540,230 520,210 Q500,200 480,180Z" 
+                      fill="#ffffff" opacity="0.2" stroke="#ffffff" strokeWidth="1"/>
                     
-                    {/* Animated network nodes in background */}
-                    <div className="position-absolute" style={{top: 0, left: 0, right: 0, bottom: 0, zIndex: -1}}>
-                      {[...Array(15)].map((_, i) => (
-                        <div 
-                          key={i}
-                          className="position-absolute rounded-circle" 
-                          style={{
-                            backgroundColor: 'rgba(255,255,255,0.15)',
-                            width: `${8 + Math.random() * 10}px`,
-                            height: `${8 + Math.random() * 10}px`,
-                            top: `${Math.random() * 100}%`,
-                            left: `${Math.random() * 100}%`,
-                            animation: `float ${3 + Math.random() * 4}s ease-in-out infinite`,
-                            animationDelay: `${Math.random() * 5}s`
-                          }}
-                        />
-                      ))}
-                    </div>
+                    {/* Japan */}
+                    <path d="M650,160 Q660,150 670,160 Q680,170 675,190 Q670,210 650,220 Q640,215 635,200 Q630,180 650,160Z" 
+                      fill="#ffffff" opacity="0.2" stroke="#ffffff" strokeWidth="1"/>
+                    
+                    {/* Connection network */}
+                    <g>
+                      {/* Data node clusters */}
+                      <g>
+                        {/* China cluster */}
+                        <circle cx="550" cy="170" r="8" fill="#ffffff" opacity="0.7" />
+                        <circle cx="530" cy="160" r="5" fill="#ffffff" opacity="0.6" />
+                        <circle cx="570" cy="180" r="6" fill="#ffffff" opacity="0.6" />
+                        
+                        {/* India cluster */}
+                        <circle cx="420" cy="200" r="7" fill="#ffffff" opacity="0.7" />
+                        <circle cx="430" cy="180" r="5" fill="#ffffff" opacity="0.6" />
+                        <circle cx="410" cy="210" r="4" fill="#ffffff" opacity="0.5" />
+                        
+                        {/* Southeast Asia cluster */}
+                        <circle cx="530" cy="250" r="6" fill="#ffffff" opacity="0.7" />
+                        <circle cx="510" cy="260" r="4" fill="#ffffff" opacity="0.5" />
+                        
+                        {/* Japan cluster */}
+                        <circle cx="660" cy="180" r="5" fill="#ffffff" opacity="0.7" />
+                      </g>
+                      
+                      {/* Connection lines */}
+                      <g stroke="#ffffff" strokeOpacity="0.3">
+                        {/* Main connections */}
+                        <line x1="550" y1="170" x2="420" y2="200" strokeWidth="2" />
+                        <line x1="550" y1="170" x2="530" y2="250" strokeWidth="2" />
+                        <line x1="550" y1="170" x2="660" y2="180" strokeWidth="2" />
+                        <line x1="420" y1="200" x2="530" y2="250" strokeWidth="1.5" />
+                        
+                        {/* Cluster internal connections */}
+                        <line x1="550" y1="170" x2="530" y2="160" strokeWidth="1" />
+                        <line x1="550" y1="170" x2="570" y2="180" strokeWidth="1" />
+                        <line x1="420" y1="200" x2="430" y2="180" strokeWidth="1" />
+                        <line x1="420" y1="200" x2="410" y2="210" strokeWidth="1" />
+                        <line x1="530" y1="250" x2="510" y2="260" strokeWidth="1" />
+                      </g>
+                      
+                      {/* Genomic data flow animations */}
+                      <g className="data-flow-particles">
+                        {[...Array(8)].map((_, i) => (
+                          <circle 
+                            key={i}
+                            className="data-particle"
+                            cx="0" cy="0" r="3" 
+                            fill="#ffffff"
+                            style={{
+                              animationDelay: `${i * 0.8}s`
+                            }}
+                          />
+                        ))}
+                      </g>
+                    </g>
+                  </svg>
+                </div>
+                
+                {/* DNA helix pattern overlay */}
+                <div className="position-absolute w-100 h-100" style={{ zIndex: 3, opacity: 0.1 }}>
+                  <svg width="100%" height="100%" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice">
+                    <defs>
+                      <pattern id="dnaPattern" patternUnits="userSpaceOnUse" width="400" height="200" patternTransform="rotate(30)">
+                        <path d="M0,20 Q100,100 200,20 T400,20" fill="none" stroke="#ffffff" strokeWidth="10" opacity="0.3" />
+                        <path d="M0,60 Q100,140 200,60 T400,60" fill="none" stroke="#ffffff" strokeWidth="10" opacity="0.3" />
+                        <path d="M0,100 Q100,20 200,100 T400,100" fill="none" stroke="#ffffff" strokeWidth="10" opacity="0.3" />
+                        <path d="M0,140 Q100,60 200,140 T400,140" fill="none" stroke="#ffffff" strokeWidth="10" opacity="0.3" />
+                        <path d="M0,180 Q100,100 200,180 T400,180" fill="none" stroke="#ffffff" strokeWidth="10" opacity="0.3" />
+                        
+                        {/* Connecting lines */}
+                        {[...Array(10)].map((_, i) => (
+                          <line key={i} x1={40 * i} y1="20" x2={40 * i} y2="180" stroke="#ffffff" strokeWidth="4" opacity="0.3" />
+                        ))}
+                      </pattern>
+                    </defs>
+                    <rect x="0" y="0" width="100%" height="100%" fill="url(#dnaPattern)" />
+                  </svg>
+                </div>
+                
+                {/* Content Container */}
+                <div className="position-absolute w-100 h-100 d-flex flex-column justify-content-center align-items-center text-center px-4" style={{ zIndex: 4 }}>
+                  <h1 className="display-4 fw-bold text-white mb-4" style={{ textShadow: "0 2px 10px rgba(0,0,0,0.2)" }}>
+                    World Leading Healthcare Data Network
+                  </h1>
+                  
+                  <div className="mb-4 d-flex justify-content-center">
+                    <span className="display-1 fw-bold text-white" 
+                      style={{ 
+                        textShadow: "0 0 30px rgba(255,255,255,0.5)",
+                        letterSpacing: "-2px"
+                      }}>
+                      50M+
+                    </span>
                   </div>
+                  
+                  <p className="lead text-white mb-5" style={{ textShadow: "0 1px 3px rgba(0,0,0,0.3)", maxWidth: "600px" }}>
+                    Patient, health, and multi-omic datasets for research,
+                    drug development, and clinical trials
+                  </p>
+                  
+                  <button className="btn btn-light btn-lg px-4 shadow-sm">
+                    Access Data
+                  </button>
+                </div>
+                
+                {/* Floating data particles */}
+                <div className="position-absolute w-100 h-100" style={{ zIndex: 3 }}>
+                  {[...Array(25)].map((_, i) => (
+                    <div 
+                      key={i}
+                      className="position-absolute rounded-circle genomic-particle" 
+                      style={{
+                        backgroundColor: "rgba(255,255,255,0.4)",
+                        width: `${4 + Math.random() * 6}px`,
+                        height: `${4 + Math.random() * 6}px`,
+                        top: `${Math.random() * 100}%`,
+                        left: `${Math.random() * 100}%`,
+                        boxShadow: "0 0 8px rgba(255,255,255,0.5)",
+                        animationDuration: `${5 + Math.random() * 10}s`,
+                        animationDelay: `${Math.random() * 5}s`
+                      }}
+                    />
+                  ))}
                 </div>
               </div>
             </div>
@@ -235,171 +308,169 @@ const DataBook = () => {
           </Col>
         </Row>
         
-        {/* Therapeutic Areas Section */}
+        {/* Therapeutic Areas Section - Now Full Width with improved design */}
         <Row className="mb-5">
-          <Col lg={6} className="mb-4 mb-lg-0">
-            <div id="therapeutic-section" ref={therapeuticRef} className="bg-white rounded-lg shadow-sm p-5 h-100">
-              <h3 className="fw-bold mb-5">Therapeutic Area Collections</h3>
-              
-              {therapeuticData.map((item, index) => (
-                <div key={index} className="mb-5" id={`therapeutic-area-${index}`}>
-                  <div className="d-flex justify-content-between align-items-center mb-2">
-                    <span className="fs-5 fw-medium text-dark">{item.name}</span>
-                    <span className="rounded-pill px-3 py-1 text-white" 
-                      style={{ 
-                        backgroundColor: item.color,
-                        fontSize: '0.9rem'
-                      }}>
-                      {item.records}M records
-                    </span>
-                  </div>
-                  <div className="progress rounded-pill" style={{height: '12px', backgroundColor: '#eef3f8'}}>
-                    <div 
-                      className="progress-bar therapeutic-progress"
-                      role="progressbar"
-                      style={{ 
-                        width: '0%',
-                        backgroundColor: item.color,
-                        transition: 'width 1.5s ease-out',
-                        borderRadius: '12px'
-                      }}
-                      data-value={`${(item.records / 12) * 100}%`}
-                      aria-valuenow="0"
-                      aria-valuemin="0"
-                      aria-valuemax="100"
-                    ></div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </Col>
-          <Col lg={6}>
-            <div id="genomic-section" ref={genomicRef} className="bg-white rounded-lg shadow-sm p-5 h-100">
-              <h3 className="fw-bold mb-4">Genomic Research Data</h3>
-              <p className="text-secondary mb-5">
-                Access our extensive collection of over 2 million genetic sequences to power your research in precision medicine and targeted therapies.
-              </p>
-              
-              <div className="bg-light rounded-lg p-5 mb-4">
-                <div className="position-relative">
-                  <div className="text-center mb-4">
-                    <span className="display-3 fw-bold text-primary genetic-counter">2M+</span>
-                    <div className="text-secondary mt-2">Genetic Sequences</div>
-                  </div>
-                  
-                  {/* Genetic data particles animation */}
-                  <div className="genetic-particles-container position-absolute" style={{top: 0, left: 0, right: 0, bottom: 0, zIndex: 0, pointerEvents: 'none'}}>
-                    {[...Array(15)].map((_, i) => (
-                      <div key={i} className="genetic-particle position-absolute rounded-pill" 
-                        style={{
-                          width: `${Math.random() * 10 + 3}px`,
-                          height: `${Math.random() * 3 + 2}px`,
-                          backgroundColor: i % 3 === 0 ? '#3182CE' : i % 3 === 1 ? '#E53E3E' : '#38A169',
-                          top: `${Math.random() * 100}%`,
-                          left: `${Math.random() * 100}%`,
-                          opacity: 0,
-                          transform: 'scale(0)',
-                          transition: 'opacity 0.5s ease-out, transform 0.5s ease-out'
-                        }}
-                      />
-                    ))}
-                  </div>
-                </div>
-                
-                <div className="mt-5">
-                  <div className="progress rounded-pill" style={{height: '10px', backgroundColor: '#eef3f8'}}>
-                    <div 
-                      className="progress-bar bg-primary genomic-progress" 
-                      role="progressbar" 
-                      style={{
-                        width: '0%',
-                        transition: 'width 1.8s ease-out',
-                        borderRadius: '10px'
-                      }} 
-                      data-value="85%"
-                      aria-valuenow="0" 
-                      aria-valuemin="0" 
-                      aria-valuemax="100"
-                    ></div>
-                  </div>
-                </div>
+          <Col>
+            <div id="therapeutic-section" ref={therapeuticRef} className="bg-white rounded-lg shadow p-0 overflow-hidden">
+              {/* Header section with accent color and white heading */}
+              <div className="bg-primary bg-gradient p-4 text-white">
+                <h3 className="fw-bold mb-0 text-white">Therapeutic Area Collections</h3>
               </div>
               
-              <p className="text-secondary">
-                Effortlessly navigate and select datasets tailored to your specific research or clinical requirements.
-              </p>
+              <div className="p-4">
+                {/* Updated content with specified records */}
+                <div className="mb-4">
+                  <p className="mb-3">Detailed therapeutic-area-specific collections:</p>
+                  
+                  <ul className="list-unstyled">
+                    {/* Oncology */}
+                    <li className="mb-4">
+                      <div className="d-flex justify-content-between align-items-center mb-2">
+                        <span className="fs-5 fw-medium text-dark">Oncology</span>
+                        <span className="badge text-white" style={{backgroundColor: "#3182CE", padding: "0.5rem 0.75rem"}}>
+                          77k+ records
+                        </span>
+                      </div>
+                      <div className="progress rounded" style={{height: "10px", backgroundColor: 'rgba(0,0,0,0.05)'}}>
+                        <div 
+                          className="therapeutic-progress"
+                          role="progressbar"
+                          style={{ 
+                            width: '0%',
+                            height: '100%',
+                            background: 'linear-gradient(90deg, #3182CE99 0%, #3182CE 100%)',
+                            transition: 'width 1.2s cubic-bezier(0.34, 1.56, 0.64, 1)'
+                          }}
+                          data-value="90%"
+                          aria-valuenow="0"
+                          aria-valuemin="0"
+                          aria-valuemax="100"
+                        ></div>
+                      </div>
+                    </li>
+                    
+                    {/* Cardiology */}
+                    <li className="mb-4">
+                      <div className="d-flex justify-content-between align-items-center mb-2">
+                        <span className="fs-5 fw-medium text-dark">Cardiology</span>
+                        <span className="badge text-white" style={{backgroundColor: "#E53E3E", padding: "0.5rem 0.75rem"}}>
+                          1.5M records
+                        </span>
+                      </div>
+                      <div className="progress rounded" style={{height: "10px", backgroundColor: 'rgba(0,0,0,0.05)'}}>
+                        <div 
+                          className="therapeutic-progress"
+                          role="progressbar"
+                          style={{ 
+                            width: '0%',
+                            height: '100%',
+                            background: 'linear-gradient(90deg, #E53E3E99 0%, #E53E3E 100%)',
+                            transition: 'width 1.2s cubic-bezier(0.34, 1.56, 0.64, 1)'
+                          }}
+                          data-value="75%"
+                          aria-valuenow="0"
+                          aria-valuemin="0"
+                          aria-valuemax="100"
+                        ></div>
+                      </div>
+                    </li>
+                    
+                    {/* Neurology */}
+                    <li className="mb-4">
+                      <div className="d-flex justify-content-between align-items-center mb-2">
+                        <span className="fs-5 fw-medium text-dark">Neurology</span>
+                        <span className="badge text-white" style={{backgroundColor: "#805AD5", padding: "0.5rem 0.75rem"}}>
+                          100k+ records
+                        </span>
+                      </div>
+                      <div className="progress rounded" style={{height: "10px", backgroundColor: 'rgba(0,0,0,0.05)'}}>
+                        <div 
+                          className="therapeutic-progress"
+                          role="progressbar"
+                          style={{ 
+                            width: '0%',
+                            height: '100%',
+                            background: 'linear-gradient(90deg, #805AD599 0%, #805AD5 100%)',
+                            transition: 'width 1.2s cubic-bezier(0.34, 1.56, 0.64, 1)'
+                          }}
+                          data-value="60%"
+                          aria-valuenow="0"
+                          aria-valuemin="0"
+                          aria-valuemax="100"
+                        ></div>
+                      </div>
+                    </li>
+                    
+                    {/* Rare Diseases */}
+                    <li className="mb-4">
+                      <div className="d-flex justify-content-between align-items-center mb-2">
+                        <span className="fs-5 fw-medium text-dark">Rare Diseases</span>
+                        <span className="badge text-white" style={{backgroundColor: "#38A169", padding: "0.5rem 0.75rem"}}>
+                          15k+ records
+                        </span>
+                      </div>
+                      <div className="progress rounded" style={{height: "10px", backgroundColor: 'rgba(0,0,0,0.05)'}}>
+                        <div 
+                          className="therapeutic-progress"
+                          role="progressbar"
+                          style={{ 
+                            width: '0%',
+                            height: '100%',
+                            background: 'linear-gradient(90deg, #38A16999 0%, #38A169 100%)',
+                            transition: 'width 1.2s cubic-bezier(0.34, 1.56, 0.64, 1)'
+                          }}
+                          data-value="35%"
+                          aria-valuenow="0"
+                          aria-valuemin="0"
+                          aria-valuemax="100"
+                        ></div>
+                      </div>
+                    </li>
+                    
+                    {/* Metabolic Disorders */}
+                    <li className="mb-4">
+                      <div className="d-flex justify-content-between align-items-center mb-2">
+                        <span className="fs-5 fw-medium text-dark">Metabolic Disorders</span>
+                        <span className="badge text-white" style={{backgroundColor: "#DD6B20", padding: "0.5rem 0.75rem"}}>
+                          1.5M records
+                        </span>
+                      </div>
+                      <div className="progress rounded" style={{height: "10px", backgroundColor: 'rgba(0,0,0,0.05)'}}>
+                        <div 
+                          className="therapeutic-progress"
+                          role="progressbar"
+                          style={{ 
+                            width: '0%',
+                            height: '100%',
+                            background: 'linear-gradient(90deg, #DD6B2099 0%, #DD6B20 100%)',
+                            transition: 'width 1.2s cubic-bezier(0.34, 1.56, 0.64, 1)'
+                          }}
+                          data-value="75%"
+                          aria-valuenow="0"
+                          aria-valuemin="0"
+                          aria-valuemax="100"
+                        ></div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                
+                {/* Footer section */}
+                <div className="mt-5 text-center">
+                  <p className="text-secondary mb-4">
+                    Access comprehensive therapeutic datasets tailored to your research needs with complete patient journeys and longitudinal records.
+                  </p>
+                  <button className="btn btn-primary px-4 py-2">
+                    Explore All Datasets
+                  </button>
+                </div>
+              </div>
             </div>
           </Col>
         </Row>
       </Container>
       
-      {/* CSS for animations */}
-      <style jsx>{`
-        @keyframes pulse {
-          0% { transform: scale(1); }
-          50% { transform: scale(1.5); }
-          100% { transform: scale(1); }
-        }
-        
-        @keyframes float {
-          0% { transform: translateY(0px); }
-          50% { transform: translateY(-10px); }
-          100% { transform: translateY(0px); }
-        }
-        
-        @keyframes particleFloat {
-          0% { transform: translateY(0) translateX(0); }
-          25% { transform: translateY(-10px) translateX(5px); }
-          50% { transform: translateY(5px) translateX(10px); }
-          75% { transform: translateY(10px) translateX(-5px); }
-          100% { transform: translateY(0) translateX(0); }
-        }
-        
-        .genetic-particle {
-          animation: particleFloat 4s ease-in-out infinite;
-          animation-delay: var(--delay, 0s);
-        }
-        
-        .animate__animated {
-          animation-duration: 1s;
-        }
-        
-        .animate__fadeIn {
-          animation-name: fadeIn;
-        }
-        
-        .animate__fadeInUp {
-          animation-name: fadeInUp;
-        }
-        
-        .animate__delay-1s {
-          animation-delay: 0.3s;
-        }
-        
-        .animate__delay-2s {
-          animation-delay: 0.6s;
-        }
-        
-        .animate__delay-3s {
-          animation-delay: 0.9s;
-        }
-        
-        @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-        
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translate3d(0, 30px, 0);
-          }
-          to {
-            opacity: 1;
-            transform: translate3d(0, 0, 0);
-          }
-        }
-      `}</style>
+
     </section>
   );
 };

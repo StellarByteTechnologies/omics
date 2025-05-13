@@ -1,104 +1,144 @@
 import { Col, Container, Row } from 'react-bootstrap';
-import Image from 'next/image';
 import Link from 'next/link';
-import { footerLinks } from '@/components/common/data';
 import IconifyIcon from '@/components/wrappers/IconifyIcon';
-import { currentYear, developedBy, developedByLink } from '@/assets/data/constants';
-import logo from '@/assets/images/logo.png';
+import { currentYear } from '@/assets/data/constants';
+
 const Footer = () => {
-  return <div className="pt-5 pb-3 position-relative bg-light">
+  return (
+    <div className="pt-5 pb-3 position-relative bg-white">
       <Container>
-        <Row>
-          <Col lg={4}>
-            <div className="me-5">
-              <Link className="navbar-brand me-lg-4 me-auto" href="/">
-                <Image src={logo} height={30} className="d-inline-block align-top" alt="logo" />
-              </Link>
-              <p className="mt-4">300 Park Avenue, 12th Floor New York, NY 10022</p>
-              <p className="mb-5">1499 Burwell Heights Road Port Arthur Meadow Nashville, TX 77642</p>
+        {/* Main Footer Content - Two Column Layout */}
+        <Row className="mb-5">
+          {/* Left Column - Logo and Newsletter */}
+          <Col lg={4} className="mb-4 mb-lg-0">
+            <Link className="navbar-brand d-inline-block mb-4" href="/">
+              <span className="fw-bold fs-4">NURIX</span>
+            </Link>
+            <div>
+              <h4 className="fw-bold mb-4">Subscribe to Newsletter</h4>
+              <div className="d-flex newsletter-input">
+                <input 
+                  type="email" 
+                  className="form-control border-end-0" 
+                  placeholder="your@email.com" 
+                />
+                <button className="btn btn-primary">
+                  <IconifyIcon icon="lucide:arrow-right" />
+                </button>
+              </div>
+            </div>
+            
+            {/* Certificates Section with SVG */}
+            <div className="mt-5">
+              <h6 className="text-muted mb-4">CERTIFICATES</h6>
+              <div className="d-flex flex-wrap gap-4">
+                <div className="d-flex align-items-center">
+                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="20" cy="20" r="18" stroke="black" strokeWidth="2" fill="white"/>
+                    <text x="20" y="22" textAnchor="middle" fontSize="8" fontWeight="bold">ISO</text>
+                    <text x="20" y="28" textAnchor="middle" fontSize="6">27001</text>
+                  </svg>
+                  <div className="ms-2">
+                    <div>ISO</div>
+                    <div>27001</div>
+                  </div>
+                </div>
+                <div className="d-flex align-items-center">
+                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="20" cy="20" r="18" stroke="black" strokeWidth="2" fill="white"/>
+                    <text x="20" y="20" textAnchor="middle" fontSize="8" fontWeight="bold">SOC 2</text>
+                    <text x="20" y="28" textAnchor="middle" fontSize="5">(Coming Soon)</text>
+                  </svg>
+                  <div className="ms-2">
+                    <div>SOC 2</div>
+                    <div>(Coming Soon)</div>
+                  </div>
+                </div>
+                <div className="d-flex align-items-center">
+                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="20" cy="20" r="18" stroke="black" strokeWidth="2" fill="white"/>
+                    <text x="20" y="22" textAnchor="middle" fontSize="8" fontWeight="bold">GDPR</text>
+                    <text x="20" y="28" textAnchor="middle" fontSize="6">compliant</text>
+                  </svg>
+                  <div className="ms-2">
+                    <div>GDPR</div>
+                    <div>compliant</div>
+                  </div>
+                </div>
+                <div className="d-flex align-items-center">
+                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="20" cy="20" r="18" stroke="black" strokeWidth="2" fill="white"/>
+                    <text x="20" y="22" textAnchor="middle" fontSize="8" fontWeight="bold">HIPAA</text>
+                    <text x="20" y="28" textAnchor="middle" fontSize="6">compliant</text>
+                  </svg>
+                  <div className="ms-2">
+                    <div>HIPAA</div>
+                    <div>compliant</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </Col>
+          
+          {/* Right Column - Address, Contact, and Social Links */}
           <Col lg={8}>
             <Row>
-              {Object.keys(footerLinks).slice(2, 4).map((title, idx) => {
-              return <Col sm={'auto'} key={idx}>
-                      <div className="ps-md-5">
-                        <h6 className="mb-4 mt-5 mt-sm-2 fs-14 fw-semibold">{title}</h6>
-                        <ul className="list-unstyled">
-                          {footerLinks[title].links.map((link, idx) => <li className="my-2" key={idx}>
-                              <Link href="" className="text-muted">
-                                {link}
-                              </Link>
-                            </li>)}
-                        </ul>
-                      </div>
-                    </Col>;
-            })}
-              <Col xs={'auto'}>
-                <div className="ps-md-5">
-                  <h5 className="text-dark mb-4 fw-semibold">Get in touch</h5>
-                  <ul className="list-unstyled">
-                    <li className="my-1">
-                      <Link href="" className="text-muted">
-                        hello@omaics.com
-                      </Link>
-                    </li>
-                  </ul>
-                  <ul className="list-inline">
-                    <li className="list-inline-item me-3">
-                      <Link href="" className="text-muted">
-                        <IconifyIcon className="icon-xs" height="20" width="20" icon="lucide:facebook" />
-                      </Link>
-                    </li>
-                    <li className="list-inline-item me-3">
-                      <Link href="" className="text-muted">
-                        <IconifyIcon className="icon-xs" height="20" width="20" icon="lucide:twitter" />
-                      </Link>
-                    </li>
-                    <li className="list-inline-item me-3">
-                      <Link href="" className="text-muted">
-                        <IconifyIcon className="icon-xs" height="20" width="20" icon="lucide:linkedin" />
-                      </Link>
-                    </li>
-                    <li className="list-inline-item">
-                      <Link href="" className="text-muted">
-                        <IconifyIcon className="icon-xs" height="20" width="20" icon="lucide:instagram" />
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
+              {/* Address Section (Replaced Company) */}
+              <Col md={4} className="mb-4 mb-md-0">
+                <h6 className="text-muted mb-4">ADDRESS</h6>
+                <p className="mb-2">300 Park Avenue, 12th Floor</p>
+                <p className="mb-2">New York, NY 10022</p>
+                <p className="mb-4">United States</p>
               </Col>
-              <Col xs="auto">
-                <div className="ps-md-5">
-                  <h5 className="text-dark mb-4 fw-semibold">Languages</h5>
-                  <ul className="list-unstyled">
-                    <li className="my-2">
-                      <Link href="" className="text-muted">
-                        Francais
-                      </Link>
-                    </li>
-                    <li className="my-2">
-                      <Link href="" className="text-muted">
-                        English
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
+              
+              {/* Contact Section (Replaced Solutions) */}
+              <Col md={4} className="mb-4 mb-md-0">
+                <h6 className="text-muted mb-4">CONTACT</h6>
+                <p className="mb-2">Phone: +1 (555) 123-4567</p>
+                <p className="mb-4">Email: hello@nurix.com</p>
+                
+                <p className="mb-2">Support: +1 (800) 555-0123</p>
+                <p className="mb-2">Hours: 9AM-6PM EST</p>
+                <p className="mb-2">Monday - Friday</p>
+              </Col>
+              
+              {/* Follow Us Section (Kept as is) */}
+              <Col md={4}>
+                <h6 className="text-muted mb-4">FOLLOW US</h6>
+                <ul className="list-unstyled">
+                  <li className="mb-2">
+                    <Link href="https://twitter.com/nurix" className="text-dark text-decoration-none">
+                      Twitter
+                    </Link>
+                  </li>
+                  <li className="mb-2">
+                    <Link href="https://linkedin.com/company/nurix" className="text-dark text-decoration-none">
+                      LinkedIn
+                    </Link>
+                  </li>
+                  <li className="mb-2">
+                    <Link href="https://youtube.com/nurix" className="text-dark text-decoration-none">
+                      Youtube
+                    </Link>
+                  </li>
+                </ul>
               </Col>
             </Row>
           </Col>
         </Row>
-        <hr />
-        <Row>
-          <Col md={12}>
-            <div className="text-center text-muted">
-              <p className="pb-0 mb-0 fs-14 text-center text-muted">
-                {currentYear} © Omaics. All rights reserved. Crafted by <a href={developedByLink}>{developedBy}</a>
-              </p>
+
+        {/* Copyright Section */}
+        <Row className="mt-5 pt-3 border-top">
+          <Col className="d-flex justify-content-between align-items-center">
+            <div>© {currentYear} Nurix</div>
+            <div>
+              Site By <Link href="https://mark91studio.com" className="text-primary text-decoration-none">Mark91 Studio</Link>
             </div>
           </Col>
         </Row>
       </Container>
-    </div>;
+    </div>
+  );
 };
+
 export default Footer;

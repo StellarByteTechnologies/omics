@@ -1,4 +1,4 @@
-import Navbar from '@/components/layout/Navbar';
+import ModernNavbar from '@/components/layout/ModernNavbar';
 import Hero from './components/Hero';
 import Benefits from './components/Benefits';
 import { benefits, vacancies } from './data';
@@ -12,7 +12,7 @@ export const metadata = {
 const Career = () => {
   return <>
       <div className="bg-gradient2 position-relative">
-        <Navbar buttonVariant="outline-secondary" />
+        <ModernNavbar buttonVariant="outline-secondary" />
         <Hero />
       </div>
       <Benefits benefits={benefits} />

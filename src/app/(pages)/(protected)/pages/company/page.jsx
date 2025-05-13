@@ -1,5 +1,5 @@
 import Footer from '@/components/common/Footer';
-import Navbar from '@/components/layout/Navbar';
+import ModernNavbar from '@/components/layout/ModernNavbar';
 import About from './components/About';
 import Client from './components/Client';
 import Counter from './components/Counter';
@@ -12,7 +12,7 @@ export const metadata = {
 };
 const Company = () => {
   return <>
-      <Navbar buttonVariant="outline-secondary" />
+      <ModernNavbar buttonVariant="outline-secondary" />
       <Hero />
       <About />
       <Feature />

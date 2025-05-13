@@ -2,11 +2,55 @@
 import IconifyIcon from '@/components/wrappers/IconifyIcon';
 import Link from 'next/link';
 import { Button, Col, Container, Row } from 'react-bootstrap';
+import { useEffect } from 'react';
 
 const Hero = () => {
+  // Load Calendly script on component mount
+  useEffect(() => {
+    // Add Calendly script to head
+    const head = document.querySelector('head');
+    const script = document.createElement('script');
+    script.src = 'https://assets.calendly.com/assets/external/widget.js';
+    script.async = true;
+    
+    // Only add if it doesn't already exist
+    if (!document.querySelector('script[src="https://assets.calendly.com/assets/external/widget.js"]')) {
+      head.appendChild(script);
+    }
+    
+    // Add Calendly stylesheet
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'https://assets.calendly.com/assets/external/widget.css';
+    
+    // Only add if it doesn't already exist
+    if (!document.querySelector('link[href="https://assets.calendly.com/assets/external/widget.css"]')) {
+      head.appendChild(link);
+    }
+    
+    return () => {
+      // Clean up script and stylesheet on unmount if needed
+      // Usually not necessary in production
+    };
+  }, []);
+
+  // Function to open Calendly when CTA is clicked
+  const openCalendly = () => {
+    if (typeof window !== 'undefined' && window.Calendly) {
+      window.Calendly.initPopupWidget({
+        url: 'https://calendly.com/shubhamshrm02/30min?back=1&month=2025-05'
+      });
+      return true;
+    } else {
+      // Fallback if Calendly is not loaded
+      window.open('https://calendly.com/shubhamshrm02/30min?back=1&month=2025-05', '_blank');
+      return false;
+    }
+  };
+
   return (
     <div className="position-relative hero-5 pb-4 pt-7 pb-sm-0">
-      {/* Full section elements with faster animations */}
+      {/* Full section elements with adjusted animations */}
       <div className="circuit-board-pattern"></div>
       <div className="dna-waves"></div>
       <div className="pulse-grid"></div>
@@ -14,52 +58,34 @@ const Hero = () => {
       <Container className="position-relative zindex-1">
         <Row className="align-items-center">
           <Col lg={12}>
-            <div className="rounded d-inline-block mb-4 px-3 py-2 alert bg-soft-warning aos-init aos-animate" data-aos="fade-right" data-aos-duration={1000}>
-              <Link href="">
-                <div className="d-flex align-items-center">
-                  <div className="badge rounded-pill bg-orange px-2 py-1">New!</div>
-                  <div className="mx-3">Revolutionary AI diagnostic platform</div>
-                </div>
-              </Link>
-            </div>
-            
-            {/* Enhanced headline section */}
+            {/* Enhanced headline section with new heading */}
             <div className="headline-container">
               <h1 className="headline-text">
-                Embrace the Power of 
-                <div className="headline-highlight">Predictive AI Diagnosis</div>
+                AI-Ready, Comprehensive
+                <div className="headline-highlight">Omics and Clinical Data from Asia</div>
               </h1>
               <div className="headline-glow"></div>
             </div>
             
             {/* Reduced margin between paragraph and buttons */}
             <p className="mt-4 fs-18 mb-2 w-75">
-            OmicsBank provides unparalleled access to multi-omic, clinical, and structured EHR from Asia and the Middle East, fuelling breakthroughs in drug discovery, precision medicine and clinical trials. 
+            Unparalleled access to multi-omic (Phenomic, Genomic, Transcriptomics, Proteomic, Metabolomic) and Biobank, longitudinal clinical data from Asia and the Middle East, fuelling breakthroughs in drug R&D,  precision medicine, and clinical trials. 
             </p>
             <div className="action-buttons mt-2">
-              <Button variant="secondary">
-                <IconifyIcon icon="lucide:stethoscope" className="icon-xxs me-2" /> Our Solutions
-              </Button>
-              <Button variant="outline-secondary" className="ms-2">
-                Learn More
+              {/* Calendly button with direct link as fallback */}
+              <Button 
+                variant="secondary" 
+                className="calendly-btn"
+                onClick={openCalendly}
+              >
+                <IconifyIcon icon="lucide:calendar-clock" className="me-2" /> 
+                Book a Call
               </Button>
             </div>
           </Col>
         </Row>
       </Container>
-      <div className="align-items-end links-social d-sm-block d-none">
-        <ul className="list-inline text-muted text-uppercase fw-medium">
-          <li className="list-inline-item py-2">
-            <Link href="">Twitter</Link>
-          </li>
-          <li className="list-inline-item py-2">
-            <Link href="">Facebook</Link>
-          </li>
-          <li className="list-inline-item py-2">
-            <Link href="">LinkedIn</Link>
-          </li>
-        </ul>
-      </div>
+      
       <div className="shape bottom">
         <svg width="1440px" height="40px" viewBox="0 0 1440 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
           <g id="shape-b" stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
@@ -70,6 +96,19 @@ const Hero = () => {
         </svg>
       </div>
       
+      {/* Add direct Calendly popup element */}
+      <div 
+        className="calendly-inline-widget" 
+        data-url="https://calendly.com/shubhamshrm02/30min?back=1&month=2025-05"
+        style={{ 
+          position: 'absolute', 
+          left: '-9999px', 
+          width: '0', 
+          height: '0', 
+          visibility: 'hidden' 
+        }}
+      ></div>
+      
       <style jsx>{`
         .hero-5 {
           min-height: 600px;
@@ -78,7 +117,7 @@ const Hero = () => {
           overflow: hidden;
         }
         
-        /* Circuit board pattern */
+        /* Circuit board pattern - SLOWER speed & full width */
         .circuit-board-pattern {
           position: absolute;
           top: 0;
@@ -88,30 +127,31 @@ const Hero = () => {
           background-image: linear-gradient(rgba(255, 80, 32, 0.1) 1px, transparent 1px), 
                            linear-gradient(90deg, rgba(255, 80, 32, 0.1) 1px, transparent 1px);
           background-size: 30px 30px;
-          animation: moveCircuit 5s linear infinite;
+          background-position: -30px 0; /* Start from extreme left */
+          animation: moveCircuit 8s linear infinite; /* Slowed from 5s to 8s */
         }
         
         @keyframes moveCircuit {
           0% {
-            background-position: 0 0;
+            background-position: -30px 0; /* Start from extreme left */
           }
           100% {
-            background-position: 30px 30px;
+            background-position: 0 30px;
           }
         }
         
-        /* DNA waves */
+        /* DNA waves - SLOWER speed & extreme positions */
         .dna-waves {
           position: absolute;
           top: 0;
-          left: 0;
-          width: 100%;
+          left: -50%; /* Extend beyond left edge */
+          width: 200%; /* Cover more than full width */
           height: 100%;
           background: 
             radial-gradient(circle at 20% 30%, rgba(255, 80, 32, 0.15) 0%, rgba(255, 80, 32, 0) 50%),
             radial-gradient(circle at 80% 70%, rgba(255, 80, 32, 0.15) 0%, rgba(255, 80, 32, 0) 50%);
           opacity: 0.8;
-          animation: pulseDna 1.5s ease-in-out infinite alternate;
+          animation: pulseDna 3s ease-in-out infinite alternate; /* Slowed from 1.5s to 3s */
         }
         
         @keyframes pulseDna {
@@ -125,18 +165,18 @@ const Hero = () => {
           }
         }
         
-        /* Pulse grid */
+        /* Pulse grid - SLOWER speed & extreme positioning */
         .pulse-grid {
           position: absolute;
           top: 0;
-          left: 0;
-          width: 100%;
+          left: -10%; /* Extend beyond left edge */
+          width: 120%; /* Cover more than full width */
           height: 100%;
           background-image: 
             linear-gradient(to right, transparent 8px, rgba(255, 80, 32, 0.05) 8px, rgba(255, 80, 32, 0.05) 12px, transparent 12px),
             linear-gradient(to bottom, transparent 8px, rgba(255, 80, 32, 0.05) 8px, rgba(255, 80, 32, 0.05) 12px, transparent 12px);
           background-size: 60px 60px;
-          animation: pulseGrid 1s linear infinite alternate;
+          animation: pulseGrid 2.5s linear infinite alternate; /* Slowed from 1s to 2.5s */
         }
         
         @keyframes pulseGrid {
@@ -150,42 +190,42 @@ const Hero = () => {
           }
         }
         
-        /* Data flow lines */
+        /* Data flow lines - SLOWER & extreme left start */
         .hero-5::before {
           content: '';
           position: absolute;
           top: 0;
-          left: 0;
-          width: 100%;
+          left: -50px; /* Start beyond left edge */
+          width: calc(100% + 100px); /* Cover more than full width */
           height: 100%;
           background: 
             linear-gradient(90deg, transparent 90%, rgba(255, 80, 32, 0.2) 100%),
             linear-gradient(180deg, transparent 90%, rgba(255, 80, 32, 0.2) 100%);
           background-size: 200px 200px;
-          animation: dataFlow 2s linear infinite;
+          animation: dataFlow 4s linear infinite; /* Slowed from 2s to 4s */
           pointer-events: none;
         }
         
         @keyframes dataFlow {
           0% {
-            background-position: 0 0;
+            background-position: -200px 0; /* Start from extreme left */
           }
           100% {
-            background-position: 200px 200px;
+            background-position: 0 200px;
           }
         }
         
-        /* Pulsing dots */
+        /* Pulsing dots - SLOWER & full width coverage */
         .hero-5::after {
           content: '';
           position: absolute;
           top: 0;
-          left: 0;
-          width: 100%;
+          left: -20px; /* Start beyond left edge */
+          width: calc(100% + 40px); /* Cover more than full width */
           height: 100%;
           background-image: radial-gradient(rgba(255, 80, 32, 0.3) 1px, transparent 1px);
           background-size: 40px 40px;
-          animation: pulseDots 0.8s ease-in-out infinite alternate;
+          animation: pulseDots 1.6s ease-in-out infinite alternate; /* Slowed from 0.8s to 1.6s */
           pointer-events: none;
         }
         
@@ -227,7 +267,7 @@ const Hero = () => {
           font-weight: 900;
           position: relative;
           margin-top: 0.3rem;
-          animation: pulseText 2s infinite alternate;
+          animation: pulseText 3s infinite alternate; /* Slowed from 2s to 3s */
         }
         
         .headline-highlight::after {
@@ -250,7 +290,7 @@ const Hero = () => {
           background: radial-gradient(circle, rgba(255, 80, 32, 0.2) 0%, rgba(255, 80, 32, 0) 70%);
           filter: blur(15px);
           z-index: 1;
-          animation: moveGlow 3s infinite alternate ease-in-out;
+          animation: moveGlow 5s infinite alternate ease-in-out; /* Slowed from 3s to 5s */
         }
         
         @keyframes pulseText {
@@ -292,7 +332,7 @@ const Hero = () => {
           margin-top: 0.75rem;
         }
         
-        /* Button styling */
+        /* Calendly button styling */
         .btn-secondary {
           background-color: #ff5020;
           border-color: #ff5020;
@@ -309,33 +349,12 @@ const Hero = () => {
           box-shadow: 0 7px 20px rgba(255, 80, 32, 0.4);
         }
         
-        .btn-outline-secondary {
-          border-color: #ff5020;
-          color: #ff5020;
-          padding: 0.8rem 1.5rem;
-          font-weight: 600;
-          font-size: 1.1rem;
-          transition: all 0.3s ease;
-        }
-        
-        .btn-outline-secondary:hover {
-          background-color: #ff5020;
-          color: white;
-          transform: translateY(-3px);
-          box-shadow: 0 7px 20px rgba(255, 80, 32, 0.3);
-        }
-        
-        /* Social links */
-        .links-social {
-          position: absolute;
-          right: 3rem;
-          bottom: 3rem;
-          z-index: 1;
-        }
-        
-        .links-social ul li a {
-          color: #555;
-          text-decoration: none;
+        /* Calendly specific styling */
+        .calendly-btn {
+          min-width: 180px;
+          letter-spacing: 0.02em;
+          text-transform: uppercase;
+          font-size: 1rem;
         }
         
         /* Responsive adjustments */

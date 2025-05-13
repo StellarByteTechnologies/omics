@@ -1,4 +1,4 @@
-import Navbar from '@/components/layout/Navbar';
+import ModernNavbar from '@/components/layout/ModernNavbar';
 import Hero from './components/Hero';
 import ContactDetail from './components/ContactDetail';
 import Footer3 from '@/components/common/Footer3';
@@ -8,7 +8,7 @@ export const metadata = {
 const Contact = () => {
   return <>
       <div className="header-7 bg-gradient2">
-        <Navbar centered buttonVariant="outline-secondary" />
+        <ModernNavbar centered buttonVariant="outline-secondary" />
         <Hero />
       </div>
       <ContactDetail />

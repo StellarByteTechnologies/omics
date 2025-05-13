@@ -1,5 +1,5 @@
 import Footer3 from '@/components/common/Footer3';
-import Navbar from '@/components/layout/Navbar';
+import ModernNavbar from '@/components/layout/ModernNavbar';
 import Blogs from './components/Blogs';
 import Hero from './components/Hero';
 export const metadata = {
@@ -9,7 +9,7 @@ const BlogList = () => {
   return <>
       <div className="header-7">
         <div className="overlay"></div>
-        <Navbar buttonVariant="primary" />
+        <ModernNavbar buttonVariant="primary" />
         <Hero />
       </div>
       <Blogs />

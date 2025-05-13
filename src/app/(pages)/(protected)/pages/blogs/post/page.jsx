@@ -1,4 +1,4 @@
-import Navbar from '@/components/layout/Navbar';
+import ModernNavbar from '@/components/layout/ModernNavbar';
 import Hero from './components/Hero';
 import PostContent from './components/PostContent';
 import PostNavigation from './components/PostNavigation';
@@ -9,7 +9,7 @@ export const metadata = {
 };
 const Post = () => {
   return <>
-      <Navbar buttonVariant="outline-secondary" centered />
+      <ModernNavbar buttonVariant="outline-secondary" centered />
       <Hero />
       <PostContent />
       <PostNavigation />
