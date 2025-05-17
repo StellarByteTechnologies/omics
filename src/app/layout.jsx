@@ -14,10 +14,10 @@ import 'aos/dist/aos.css';
 import '@/assets/scss/theme.scss';
 export const metadata = {
   title: {
-    template: '%s | Premium Landing Pages',
+    template: '%s | Omics Bank',
     default: DEFAULT_PAGE_TITLE
   },
-  description: 'A fully featured multi purpose template'
+  description: 'Trusted Partner for Asian RWD & Multi-omics data access'
 };
 const splashScreenStyles = `
 #splash-screen {

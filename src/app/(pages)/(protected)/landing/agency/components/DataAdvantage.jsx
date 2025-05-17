@@ -225,7 +225,7 @@ const DataAdvantage = () => {
                   </Col>
                   <Col md={4} className="text-md-end">
                     <a href="#contact" className="btn btn-primary px-4 py-3 rounded-pill d-inline-flex align-items-center">
-                      Get Started <FaArrowRight className="ms-2" size={14} />
+                      Get Data Advantage<FaArrowRight className="ms-2" size={14} />
                     </a>
                   </Col>
                 </Row>

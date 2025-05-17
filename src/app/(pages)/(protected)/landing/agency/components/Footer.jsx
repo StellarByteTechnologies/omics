@@ -12,7 +12,7 @@ const Footer = () => {
           {/* Left Column - Logo and Newsletter */}
           <Col lg={4} className="mb-4 mb-lg-0">
             <Link className="navbar-brand d-inline-block mb-4" href="/">
-              <span className="fw-bold fs-4">NURIX</span>
+              <span className="fw-bold fs-4">Omics Bank</span>
             </Link>
             <div>
               <h4 className="fw-bold mb-4">Subscribe to Newsletter</h4>
@@ -86,16 +86,16 @@ const Footer = () => {
               {/* Address Section (Replaced Company) */}
               <Col md={4} className="mb-4 mb-md-0">
                 <h6 className="text-muted mb-4">ADDRESS</h6>
-                <p className="mb-2">300 Park Avenue, 12th Floor</p>
-                <p className="mb-2">New York, NY 10022</p>
-                <p className="mb-4">United States</p>
+                <p className="mb-2">169 Madison Avenue,</p>
+                <p className="mb-2">STE 11133,</p>
+                <p className="mb-4">New York, NY 10016, USA</p>
               </Col>
               
               {/* Contact Section (Replaced Solutions) */}
               <Col md={4} className="mb-4 mb-md-0">
                 <h6 className="text-muted mb-4">CONTACT</h6>
                 <p className="mb-2">Phone: +1 (555) 123-4567</p>
-                <p className="mb-4">Email: hello@nurix.com</p>
+                <p className="mb-4">Email: info@omicsbank.com</p>
                 
                 <p className="mb-2">Support: +1 (800) 555-0123</p>
                 <p className="mb-2">Hours: 9AM-6PM EST</p>
@@ -107,17 +107,17 @@ const Footer = () => {
                 <h6 className="text-muted mb-4">FOLLOW US</h6>
                 <ul className="list-unstyled">
                   <li className="mb-2">
-                    <Link href="https://twitter.com/nurix" className="text-dark text-decoration-none">
+                    <Link href="https://twitter.com" className="text-dark text-decoration-none">
                       Twitter
                     </Link>
                   </li>
                   <li className="mb-2">
-                    <Link href="https://linkedin.com/company/nurix" className="text-dark text-decoration-none">
+                    <Link href="https://linkedin.com/company" className="text-dark text-decoration-none">
                       LinkedIn
                     </Link>
                   </li>
                   <li className="mb-2">
-                    <Link href="https://youtube.com/nurix" className="text-dark text-decoration-none">
+                    <Link href="https://youtube.com" className="text-dark text-decoration-none">
                       Youtube
                     </Link>
                   </li>
@@ -130,9 +130,9 @@ const Footer = () => {
         {/* Copyright Section */}
         <Row className="mt-5 pt-3 border-top">
           <Col className="d-flex justify-content-between align-items-center">
-            <div>© {currentYear} Nurix</div>
+            <div>© {currentYear} Omics Bank</div>
             <div>
-              Site By <Link href="https://mark91studio.com" className="text-primary text-decoration-none">Mark91 Studio</Link>
+              Site By <Link href="https://stellarbyt.com" className="text-primary text-decoration-none">Stellarbyte</Link>
             </div>
           </Col>
         </Row>

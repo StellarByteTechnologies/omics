@@ -69,7 +69,7 @@ const Hero = () => {
             
             {/* Reduced margin between paragraph and buttons */}
             <p className="mt-4 fs-18 mb-2 w-75">
-            Unparalleled access to multi-omic (Phenomic, Genomic, Transcriptomics, Proteomic, Metabolomic) and Biobank, longitudinal clinical data from Asia and the Middle East, fuelling breakthroughs in drug R&D,  precision medicine, and clinical trials. 
+            Healthcare and Lifesciences AI models deserve better fuel — structured, longitudinal, diverse datasets in quantity and quality. OmicsBank provides AI-Ready datasets of  multi-omics (Phenomic, Genomic, Transcriptomics, Proteomic, Metabolomic), biobank and longitudinal clinical data from Asia, Africa, and the Middle East directly from major healthcare facilities in India. 
             </p>
             <div className="action-buttons mt-2">
               {/* Calendly button with direct link as fallback */}
