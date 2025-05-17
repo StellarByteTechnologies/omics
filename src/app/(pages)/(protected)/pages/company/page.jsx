@@ -1,7 +1,6 @@
 import Footer from '@/components/common/Footer';
 import ModernNavbar from '@/components/layout/ModernNavbar';
 import About from './components/About';
-import Client from './components/Client';
 import Counter from './components/Counter';
 import Feature from './components/Feature';
 import Hero from './components/Hero';
@@ -18,7 +17,7 @@ const Company = () => {
       <Feature />
       <Counter />
       <Team teamMembers={teamMembers} />
-      <Client />
+      
       <Footer />
     </>;
 };
