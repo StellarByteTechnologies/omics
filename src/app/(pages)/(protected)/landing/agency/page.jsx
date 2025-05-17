@@ -3,7 +3,6 @@ import Hero from './components/Hero';
 import Services from './components/DataAdvantage';
 import { blogPosts, jobDetails, projects, services } from './data';
 import Portfolios from './components/Portfolios';
-import Clients from './components/Clients';
 
 import Footer from './components/Footer';
 export const metadata = {
@@ -17,8 +16,7 @@ const Agency = () => {
       </div>
       <Services services={services} />
       <Portfolios portfolios={projects} />
-      <Clients />
-      {/* <Blogs blogs={blogPosts} />
+=      {/* <Blogs blogs={blogPosts} />
       <Vacancies jobDetails={jobDetails} /> */}
       <Footer />
     </>;
