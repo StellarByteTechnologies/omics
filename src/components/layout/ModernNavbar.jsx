@@ -98,7 +98,7 @@ const ModernNavbar = () => {
                 }}>
                   <FaWhatsapp size={16} color="#fff" />
                 </div>
-                <span>+91 8197 681360</span>
+                <span>+1 (857) 654-2544</span>
               </button>
             </div>
           </Nav>

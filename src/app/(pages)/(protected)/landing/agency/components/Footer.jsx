@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { Col, Container, Row, Toast } from 'react-bootstrap';
+import Image from 'next/image';
 import Link from 'next/link';
 import IconifyIcon from '@/components/wrappers/IconifyIcon';
 import { currentYear } from '@/assets/data/constants';
@@ -79,49 +80,44 @@ const Footer = () => {
               </form>
             </div>
             
-            {/* Certificates Section with SVG */}
+            {/* Certificates Section with actual logo images */}
             <div className="mt-5">
               <h6 className="text-muted mb-4">CERTIFICATES</h6>
               <div className="d-flex flex-wrap gap-4">
                 <div className="d-flex align-items-center">
-                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="20" cy="20" r="18" stroke="black" strokeWidth="2" fill="white"/>
-                    <text x="20" y="22" textAnchor="middle" fontSize="8" fontWeight="bold">ISO</text>
-                    <text x="20" y="28" textAnchor="middle" fontSize="6">27001</text>
-                  </svg>
+                  <img 
+                    src="/images/logos/iso.webp" 
+                    alt="ISO 27001 Certified" 
+                    width={60} 
+                    height={60} 
+                    style={{ objectFit: "contain" }}
+                  />
                   <div className="ms-2">
                     <div>ISO</div>
                     <div>27001</div>
                   </div>
                 </div>
                 <div className="d-flex align-items-center">
-                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="20" cy="20" r="18" stroke="black" strokeWidth="2" fill="white"/>
-                    <text x="20" y="20" textAnchor="middle" fontSize="8" fontWeight="bold">SOC 2</text>
-                    <text x="20" y="28" textAnchor="middle" fontSize="5">(Coming Soon)</text>
-                  </svg>
-                  <div className="ms-2">
-                    <div>SOC 2</div>
-                    <div>(Coming Soon)</div>
-                  </div>
-                </div>
-                <div className="d-flex align-items-center">
-                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="20" cy="20" r="18" stroke="black" strokeWidth="2" fill="white"/>
-                    <text x="20" y="22" textAnchor="middle" fontSize="8" fontWeight="bold">GDPR</text>
-                    <text x="20" y="28" textAnchor="middle" fontSize="6">compliant</text>
-                  </svg>
+                  <img 
+                    src="/images/logos/gdpr.webp" 
+                    alt="GDPR Compliant" 
+                    width={60} 
+                    height={60}
+                    style={{ objectFit: "contain" }}
+                  />
                   <div className="ms-2">
                     <div>GDPR</div>
                     <div>compliant</div>
                   </div>
                 </div>
                 <div className="d-flex align-items-center">
-                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="20" cy="20" r="18" stroke="black" strokeWidth="2" fill="white"/>
-                    <text x="20" y="22" textAnchor="middle" fontSize="8" fontWeight="bold">HIPAA</text>
-                    <text x="20" y="28" textAnchor="middle" fontSize="6">compliant</text>
-                  </svg>
+                  <img 
+                    src="/images/logos/hipaa.webp" 
+                    alt="HIPAA Compliant" 
+                    width={60} 
+                    height={60}
+                    style={{ objectFit: "contain" }}
+                  />
                   <div className="ms-2">
                     <div>HIPAA</div>
                     <div>compliant</div>
@@ -145,7 +141,7 @@ const Footer = () => {
               {/* Contact Section */}
               <Col md={6} className="mb-4 mb-md-0">
                 <h6 className="text-muted mb-4">CONTACT</h6>
-                <p className="mb-2">Phone: +1 (555) 123-4567</p>
+                <p className="mb-2">Phone: +1 (857) 654-2544</p>
                 <p className="mb-4">Email: info@omicsbank.com</p>
                 
                 <p className="mb-2">Hours: 9AM-6PM EST</p>
