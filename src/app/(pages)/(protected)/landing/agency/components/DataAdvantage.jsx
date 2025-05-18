@@ -218,14 +218,14 @@ const DataAdvantage = () => {
               <CardBody className="p-5">
                 <Row className="align-items-center">
                   <Col md={8}>
-                    <h3 className="h3 fw-bold mb-3">Ready to transform healthcare?</h3>
-                    <p className="text-muted mb-md-0">
+                    <h3 className="h3 fw-bold mb-3">Ready to transform data operations?</h3>
+                    {/* <p className="text-muted mb-md-0">
                       Experience the power of OmicsBank data advantage
-                    </p>
+                    </p> */}
                   </Col>
                   <Col md={4} className="text-md-end">
                     <a href="#contact" className="btn btn-primary px-4 py-3 rounded-pill d-inline-flex align-items-center">
-                      Get Data Advantage<FaArrowRight className="ms-2" size={14} />
+                      Request Sample Data<FaArrowRight className="ms-2" size={14} />
                     </a>
                   </Col>
                 </Row>

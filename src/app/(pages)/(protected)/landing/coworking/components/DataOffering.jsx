@@ -174,7 +174,7 @@ const DataOffering = () => {
           <Col md={6} lg={{ span: 4, offset: 0 }} className="text-center">
             <a href="#" className="cta-button">
               <span className="cta-content">
-                <span className="cta-text">Request Data Access</span>
+                <span className="cta-text">Book a Call</span>
                 <span className="cta-icon">→</span>
               </span>
             </a>

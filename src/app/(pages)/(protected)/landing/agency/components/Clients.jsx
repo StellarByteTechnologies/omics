@@ -40,7 +40,7 @@ const Clients = () => {
                 color: "#fff",
                 fontSize: "0.85rem",
                 letterSpacing: "0.5px"
-              }}>HEALTHCARE PARTNERS</span>
+              }}>PARTNERS</span>
             </div>
             
             <h2 className="display-5 fw-bold text-white mb-3" style={{ letterSpacing: "-0.02em" }}>
@@ -48,7 +48,7 @@ const Clients = () => {
             </h2>
             
             <p className="text-white-50 mb-0" style={{ fontSize: "1.1rem" }}>
-              Trusted by leading healthcare organizations worldwide
+            Trusted by leading life sciences and healthcare organizations worldwide
             </p>
           </Col>
         </Row>

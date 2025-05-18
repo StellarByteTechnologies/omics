@@ -1,31 +1,82 @@
-import { Col, Container, Row } from 'react-bootstrap';
+'use client';
+import { useState } from 'react';
+import { Col, Container, Row, Toast } from 'react-bootstrap';
 import Link from 'next/link';
 import IconifyIcon from '@/components/wrappers/IconifyIcon';
 import { currentYear } from '@/assets/data/constants';
 
 const Footer = () => {
+  const [email, setEmail] = useState('');
+  const [showToast, setShowToast] = useState(false);
+  
+  const handleSubscribe = async (e) => {
+    e.preventDefault();
+    
+    // Basic validation
+    if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
+      alert('Please enter a valid email address');
+      return;
+    }
+    
+    try {
+      // You would replace this with your actual API endpoint
+      // For example: await fetch('/api/subscribe', { method: 'POST', body: JSON.stringify({ email }) })
+      console.log('Subscribing email:', email);
+      
+      // For demonstration, we're just simulating success
+      // In a real implementation, you would handle the API response here
+      
+      // Show success message
+      setShowToast(true);
+      
+      // Clear the input field
+      setEmail('');
+      
+      // Hide toast after 3 seconds
+      setTimeout(() => {
+        setShowToast(false);
+      }, 3000);
+    } catch (error) {
+      console.error('Subscription error:', error);
+      alert('Failed to subscribe. Please try again later.');
+    }
+  };
+
   return (
     <div className="pt-5 pb-3 position-relative bg-white">
       <Container>
+        {/* Toast notification for successful subscription */}
+        <div style={{ position: 'fixed', top: '20px', right: '20px', zIndex: 1000 }}>
+          <Toast show={showToast} onClose={() => setShowToast(false)} delay={3000} autohide>
+            <Toast.Header closeButton={true}>
+              <strong className="me-auto">Success</strong>
+            </Toast.Header>
+            <Toast.Body>Subscribed successfully!</Toast.Body>
+          </Toast>
+        </div>
+        
         {/* Main Footer Content - Two Column Layout */}
         <Row className="mb-5">
           {/* Left Column - Logo and Newsletter */}
-          <Col lg={4} className="mb-4 mb-lg-0">
+          <Col lg={6} className="mb-4 mb-lg-0">
             <Link className="navbar-brand d-inline-block mb-4" href="/">
               <span className="fw-bold fs-4">Omics Bank</span>
             </Link>
             <div>
               <h4 className="fw-bold mb-4">Subscribe to Newsletter</h4>
-              <div className="d-flex newsletter-input">
+              <form onSubmit={handleSubscribe} className="d-flex newsletter-input">
                 <input 
                   type="email" 
                   className="form-control border-end-0" 
-                  placeholder="your@email.com" 
+                  placeholder="your@email.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
                 />
-                <button className="btn btn-primary">
+                <button type="submit" className="btn btn-primary">
                   <IconifyIcon icon="lucide:arrow-right" />
                 </button>
-              </div>
+              </form>
             </div>
             
             {/* Certificates Section with SVG */}
@@ -80,48 +131,25 @@ const Footer = () => {
             </div>
           </Col>
           
-          {/* Right Column - Address, Contact, and Social Links */}
-          <Col lg={8}>
+          {/* Right Column - Contact Information */}
+          <Col lg={6}>
             <Row>
-              {/* Address Section (Replaced Company) */}
-              <Col md={4} className="mb-4 mb-md-0">
+              {/* Address Section */}
+              <Col md={6} className="mb-4 mb-md-0">
                 <h6 className="text-muted mb-4">ADDRESS</h6>
                 <p className="mb-2">169 Madison Avenue,</p>
                 <p className="mb-2">STE 11133,</p>
                 <p className="mb-4">New York, NY 10016, USA</p>
               </Col>
               
-              {/* Contact Section (Replaced Solutions) */}
-              <Col md={4} className="mb-4 mb-md-0">
+              {/* Contact Section */}
+              <Col md={6} className="mb-4 mb-md-0">
                 <h6 className="text-muted mb-4">CONTACT</h6>
                 <p className="mb-2">Phone: +1 (555) 123-4567</p>
                 <p className="mb-4">Email: info@omicsbank.com</p>
                 
-                <p className="mb-2">Support: +1 (800) 555-0123</p>
                 <p className="mb-2">Hours: 9AM-6PM EST</p>
                 <p className="mb-2">Monday - Friday</p>
-              </Col>
-              
-              {/* Follow Us Section (Kept as is) */}
-              <Col md={4}>
-                <h6 className="text-muted mb-4">FOLLOW US</h6>
-                <ul className="list-unstyled">
-                  <li className="mb-2">
-                    <Link href="https://twitter.com" className="text-dark text-decoration-none">
-                      Twitter
-                    </Link>
-                  </li>
-                  <li className="mb-2">
-                    <Link href="https://linkedin.com/company" className="text-dark text-decoration-none">
-                      LinkedIn
-                    </Link>
-                  </li>
-                  <li className="mb-2">
-                    <Link href="https://youtube.com" className="text-dark text-decoration-none">
-                      Youtube
-                    </Link>
-                  </li>
-                </ul>
               </Col>
             </Row>
           </Col>

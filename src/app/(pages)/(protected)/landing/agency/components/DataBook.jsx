@@ -57,23 +57,23 @@ const DataBook = () => {
   // Interactive state for stats
   const [hoveredStat, setHoveredStat] = useState(null);
 
-  // Stats data
+  // NEW STATS DATA
   const stats = [
     {
-      value: ">50M",
-      description: "De-identified patient records from diverse global populations"
+      value: "350k+",
+      description: "Biospecimen samples (tissue, blood, CSF, saliva etc)"
     },
     {
-      value: "5",
-      description: "Major therapeutic areas with specialized datasets"
+      value: "1M+",
+      description: "Stained IHC slides"
     },
     {
-      value: "2M+",
-      description: "Genomic sequences available for research"
+      value: "1M+",
+      description: "DICOM images (MRIs, PET-CTs, etc)"
     },
     {
-      value: "4",
-      description: "Continents providing data (India, Africa, Middle East & more)"
+      value: "200k+",
+      description: ".BAM/FASTQ files from genomic, proteomic, and transcriptomic data sets"
     }
   ];
 
@@ -239,7 +239,7 @@ const DataBook = () => {
                   </p>
                   
                   <button className="btn btn-light btn-lg px-4 shadow-sm">
-                    Access Data
+                    Access Sample Data
                   </button>
                 </div>
                 
@@ -267,7 +267,7 @@ const DataBook = () => {
           </Col>
         </Row>
         
-        {/* Stats Cards Section */}
+        {/* Stats Cards Section with NEW DATA */}
         <Row className={`mt-5 mb-5 ${animate ? 'animate__animated animate__fadeInUp animate__delay-2s' : ''}`}>
           <Col>
             <div 
@@ -470,7 +470,154 @@ const DataBook = () => {
         </Row>
       </Container>
       
-
+      {/* CSS for animations */}
+      <style jsx>{`
+        @keyframes pulse {
+          0% { transform: scale(1); }
+          50% { transform: scale(1.05); }
+          100% { transform: scale(1); }
+        }
+        
+        @keyframes float {
+          0% { transform: translateY(0px); }
+          50% { transform: translateY(-10px); }
+          100% { transform: translateY(0px); }
+        }
+        
+        @keyframes particleFloat {
+          0% { transform: translateY(0) translateX(0); opacity: 0.2; }
+          25% { transform: translateY(-10px) translateX(5px); opacity: 0.7; }
+          50% { transform: translateY(5px) translateX(10px); opacity: 0.5; }
+          75% { transform: translateY(10px) translateX(-5px); opacity: 0.7; }
+          100% { transform: translateY(0) translateX(0); opacity: 0.2; }
+        }
+        
+        /* Animation for data flowing along lines in the map */
+        @keyframes dataFlow {
+          0% { 
+            transform: translate(500px, 170px); 
+            opacity: 0;
+          }
+          10% { opacity: 0.8; }
+          90% { opacity: 0.8; }
+          100% { 
+            transform: translate(610px, 160px); 
+            opacity: 0;
+          }
+        }
+        
+        /* Animation for India to SE Asia */
+        @keyframes dataFlow2 {
+          0% { 
+            transform: translate(380px, 210px); 
+            opacity: 0;
+          }
+          10% { opacity: 0.8; }
+          90% { opacity: 0.8; }
+          100% { 
+            transform: translate(500px, 260px); 
+            opacity: 0;
+          }
+        }
+        
+        /* Animation for China to India */
+        @keyframes dataFlow3 {
+          0% { 
+            transform: translate(500px, 170px); 
+            opacity: 0;
+          }
+          10% { opacity: 0.8; }
+          90% { opacity: 0.8; }
+          100% { 
+            transform: translate(380px, 210px); 
+            opacity: 0;
+          }
+        }
+        
+        .data-flow-particle.particle-type-0 {
+          animation: dataFlow 8s linear infinite;
+        }
+        
+        .data-flow-particle.particle-type-1 {
+          animation: dataFlow2 6s linear infinite;
+        }
+        
+        .data-flow-particle.particle-type-2 {
+          animation: dataFlow3 7s linear infinite;
+        }
+        
+        .genomic-particle {
+          animation: particleFloat 4s ease-in-out infinite;
+          animation-delay: var(--delay, 0s);
+        }
+        
+        /* Card hover effects */
+        @keyframes cardPulse {
+          0% { box-shadow: 0 0 0 rgba(0,0,0,0.1); }
+          50% { box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+          100% { box-shadow: 0 0 0 rgba(0,0,0,0.1); }
+        }
+        
+        /* Progress bar animation enhancement */
+        @keyframes progressGlow {
+          0% { box-shadow: 0 0 5px rgba(0,100,255,0.2); }
+          50% { box-shadow: 0 0 15px rgba(0,100,255,0.4); }
+          100% { box-shadow: 0 0 5px rgba(0,100,255,0.2); }
+        }
+        
+        .animate__animated {
+          animation-duration: 1s;
+        }
+        
+        .animate__fadeIn {
+          animation-name: fadeIn;
+        }
+        
+        .animate__fadeInUp {
+          animation-name: fadeInUp;
+        }
+        
+        .animate__delay-1s {
+          animation-delay: 0.3s;
+        }
+        
+        .animate__delay-2s {
+          animation-delay: 0.6s;
+        }
+        
+        .animate__delay-3s {
+          animation-delay: 0.9s;
+        }
+        
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translate3d(0, 30px, 0);
+          }
+          to {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+          }
+        }
+        
+        /* DNA helix animation */
+        @keyframes rotateHelix {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+        
+        /* For text glow effect */
+        @keyframes textGlow {
+          0% { text-shadow: 0 0 10px rgba(255,255,255,0.2); }
+          50% { text-shadow: 0 0 20px rgba(255,255,255,0.5); }
+          100% { text-shadow: 0 0 10px rgba(255,255,255,0.2); }
+        }
+      `}</style>
     </section>
   );
 };
