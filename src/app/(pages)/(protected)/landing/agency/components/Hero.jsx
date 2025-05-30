@@ -1,13 +1,15 @@
 'use client'
 import IconifyIcon from '@/components/wrappers/IconifyIcon';
-import Link from 'next/link';
-import { Button, Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import { useEffect } from 'react';
 
 const Hero = () => {
-  // Load Calendly script on component mount
+  // Add animation style element to document head + Load Calendly script
   useEffect(() => {
-    // Add Calendly script to head
+    // Skip if not browser environment
+    if (typeof document === 'undefined') return;
+    
+    // Load Calendly script
     const head = document.querySelector('head');
     const script = document.createElement('script');
     script.src = 'https://assets.calendly.com/assets/external/widget.js';
@@ -16,46 +18,179 @@ const Hero = () => {
     // Only add if it doesn't already exist
     if (!document.querySelector('script[src="https://assets.calendly.com/assets/external/widget.js"]')) {
       head.appendChild(script);
+      console.log('Calendly script loaded');
     }
     
-    // Add Calendly stylesheet
+    // Load Calendly stylesheet
     const link = document.createElement('link');
     link.rel = 'stylesheet';
     link.href = 'https://assets.calendly.com/assets/external/widget.css';
     
-    // Only add if it doesn't already exist
     if (!document.querySelector('link[href="https://assets.calendly.com/assets/external/widget.css"]')) {
       head.appendChild(link);
     }
     
+    // Create style element for animations
+    const styleEl = document.createElement('style');
+    styleEl.id = 'hero-animation-styles'; // Add ID to avoid duplicates
+    styleEl.textContent = `
+      .circuit-board-pattern {
+        background-image: linear-gradient(rgba(255, 80, 32, 0.1) 1px, transparent 1px), 
+                         linear-gradient(90deg, rgba(255, 80, 32, 0.1) 1px, transparent 1px);
+        background-size: 30px 30px;
+        background-position: -30px 0;
+        animation: moveCircuit 8s linear infinite;
+      }
+      
+      @keyframes moveCircuit {
+        0% {
+          background-position: -30px 0;
+        }
+        100% {
+          background-position: 0 30px;
+        }
+      }
+      
+      .dna-waves {
+        background: 
+          radial-gradient(circle at 20% 30%, rgba(255, 80, 32, 0.15) 0%, rgba(255, 80, 32, 0) 50%),
+          radial-gradient(circle at 80% 70%, rgba(255, 80, 32, 0.15) 0%, rgba(255, 80, 32, 0) 50%);
+        opacity: 0.8;
+        animation: pulseDna 3s ease-in-out infinite alternate;
+      }
+      
+      @keyframes pulseDna {
+        0% {
+          transform: scale(1);
+          opacity: 0.5;
+        }
+        100% {
+          transform: scale(1.1);
+          opacity: 0.8;
+        }
+      }
+      
+      .pulse-grid {
+        background-image: 
+          linear-gradient(to right, transparent 8px, rgba(255, 80, 32, 0.05) 8px, rgba(255, 80, 32, 0.05) 12px, transparent 12px),
+          linear-gradient(to bottom, transparent 8px, rgba(255, 80, 32, 0.05) 8px, rgba(255, 80, 32, 0.05) 12px, transparent 12px);
+        background-size: 60px 60px;
+        animation: pulseGrid 2.5s linear infinite alternate;
+      }
+      
+      @keyframes pulseGrid {
+        0% {
+          opacity: 0.3;
+          background-size: 60px 60px;
+        }
+        100% {
+          opacity: 0.7;
+          background-size: 65px 65px;
+        }
+      }
+      
+      .hero-5:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -50px;
+        width: calc(100% + 100px);
+        height: 100%;
+        background: 
+          linear-gradient(90deg, transparent 90%, rgba(255, 80, 32, 0.2) 100%),
+          linear-gradient(180deg, transparent 90%, rgba(255, 80, 32, 0.2) 100%);
+        background-size: 200px 200px;
+        animation: dataFlow 4s linear infinite;
+        pointer-events: none;
+      }
+      
+      @keyframes dataFlow {
+        0% {
+          background-position: -200px 0;
+        }
+        100% {
+          background-position: 0 200px;
+        }
+      }
+      
+      .hero-5:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -20px;
+        width: calc(100% + 40px);
+        height: 100%;
+        background-image: radial-gradient(rgba(255, 80, 32, 0.3) 1px, transparent 1px);
+        background-size: 40px 40px;
+        animation: pulseDots 1.6s ease-in-out infinite alternate;
+        pointer-events: none;
+      }
+      
+      @keyframes pulseDots {
+        0% {
+          opacity: 0.3;
+        }
+        100% {
+          opacity: 0.7;
+        }
+      }
+    `;
+    
+    // Only add if not already present
+    if (!document.getElementById('hero-animation-styles')) {
+      document.head.appendChild(styleEl);
+    }
+    
+    // Cleanup on unmount
     return () => {
-      // Clean up script and stylesheet on unmount if needed
-      // Usually not necessary in production
+      const existingStyle = document.getElementById('hero-animation-styles');
+      if (existingStyle) {
+        document.head.removeChild(existingStyle);
+      }
     };
   }, []);
 
-  // Function to open Calendly when CTA is clicked
-  const openCalendly = () => {
-    if (typeof window !== 'undefined' && window.Calendly) {
+  // Direct Calendly popup widget
+  const handleCalendlyClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    console.log('Opening Calendly native popup');
+    
+    // Check if Calendly widget is loaded
+    if (window.Calendly && window.Calendly.initPopupWidget) {
+      console.log('✅ Using Calendly native popup widget');
       window.Calendly.initPopupWidget({
         url: 'https://calendly.com/shubhamshrm02/30min?back=1&month=2025-05'
       });
-      return true;
     } else {
-      // Fallback if Calendly is not loaded
-      window.open('https://calendly.com/shubhamshrm02/30min?back=1&month=2025-05', '_blank');
-      return false;
+      console.log('⚠️ Calendly widget not loaded, loading it now...');
+      
+      // Load Calendly script if not already loaded
+      const script = document.createElement('script');
+      script.src = 'https://assets.calendly.com/assets/external/widget.js';
+      script.onload = () => {
+        console.log('✅ Calendly script loaded, opening popup');
+        window.Calendly.initPopupWidget({
+          url: 'https://calendly.com/shubhamshrm02/30min?back=1&month=2025-05'
+        });
+      };
+      script.onerror = () => {
+        console.error('❌ Failed to load Calendly script');
+        alert('Failed to load Calendly. Please check your internet connection and try again.');
+      };
+      document.head.appendChild(script);
     }
   };
 
   return (
     <div className="position-relative hero-5 pb-4 pt-7 pb-sm-0">
       {/* Full section elements with adjusted animations */}
-      <div className="circuit-board-pattern"></div>
-      <div className="dna-waves"></div>
-      <div className="pulse-grid"></div>
+      <div className="circuit-board-pattern animation-layer"></div>
+      <div className="dna-waves animation-layer"></div>
+      <div className="pulse-grid animation-layer"></div>
       
-      <Container className="position-relative zindex-1">
+      <Container className="position-relative" style={{ zIndex: 15 }}>
         <Row className="align-items-center">
           <Col lg={12}>
             {/* Enhanced headline section with new heading */}
@@ -69,45 +204,37 @@ const Hero = () => {
             
             {/* Reduced margin between paragraph and buttons */}
             <p className="mt-4 fs-18 mb-2 w-75">
-            Healthcare and Lifesciences AI models deserve better fuel — structured, longitudinal, diverse datasets in quantity and quality. OmicsBank provides AI-Ready datasets of  multi-omics (Phenomic, Genomic, Transcriptomics, Proteomic, Metabolomic), biobank and longitudinal clinical data from Asia, Africa, and the Middle East directly from major healthcare facilities in India. 
+            OmicsBank provides unparalleled access to multi-omic, clinical, and structured EHR from Asia and the Middle East, fuelling breakthroughs in drug discovery, precision medicine and clinical trials. 
             </p>
-            <div className="action-buttons mt-2">
-              {/* Calendly button with direct link as fallback */}
-              <Button 
-                variant="secondary" 
-                className="calendly-btn"
-                onClick={openCalendly}
+            <div className="action-buttons mt-2" style={{ zIndex: 25, position: 'relative' }}>
+              {/* Test button with basic functionality */}
+              <button 
+                onClick={handleCalendlyClick}
+                className="cta-button"
+                style={{ 
+                  zIndex: 35, 
+                  position: 'relative',
+                  pointerEvents: 'auto',
+                  backgroundColor: '#ff5020',
+                  cursor: 'pointer'
+                }}
               >
-                <IconifyIcon icon="lucide:calendar-clock" className="me-2" /> 
-                Book a Call
-              </Button>
+                <span className="icon-wrapper">
+                  <IconifyIcon icon="lucide:calendar-clock" />
+                </span>
+                <span>Book a Call</span>
+              </button>
             </div>
           </Col>
         </Row>
       </Container>
       
-      <div className="shape bottom">
-        <svg width="1440px" height="40px" viewBox="0 0 1440 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-          <g id="shape-b" stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
-            <g id="curve" fill="#fff">
-              <path d="M0,30.013 C239.659,10.004 479.143,0 718.453,0 C957.763,0 1198.28,10.004 1440,30.013 L1440,40 L0,40 L0,30.013 Z" id="Path" />
-            </g>
-          </g>
+      {/* Bottom curve without light shade */}
+      <div className="bottom-curve">
+        <svg width="100%" height="50" viewBox="0 0 1440 50" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0,30 C240,10 480,0 720,0 C960,0 1200,10 1440,30 L1440,50 L0,50 L0,30 Z" fill="white" />
         </svg>
       </div>
-      
-      {/* Add direct Calendly popup element */}
-      <div 
-        className="calendly-inline-widget" 
-        data-url="https://calendly.com/shubhamshrm02/30min?back=1&month=2025-05"
-        style={{ 
-          position: 'absolute', 
-          left: '-9999px', 
-          width: '0', 
-          height: '0', 
-          visibility: 'hidden' 
-        }}
-      ></div>
       
       <style jsx>{`
         .hero-5 {
@@ -117,125 +244,41 @@ const Hero = () => {
           overflow: hidden;
         }
         
-        /* Circuit board pattern - SLOWER speed & full width */
-        .circuit-board-pattern {
+        /* Animation layers */
+        .animation-layer {
           position: absolute;
           top: 0;
           left: 0;
           width: 100%;
           height: 100%;
-          background-image: linear-gradient(rgba(255, 80, 32, 0.1) 1px, transparent 1px), 
-                           linear-gradient(90deg, rgba(255, 80, 32, 0.1) 1px, transparent 1px);
-          background-size: 30px 30px;
-          background-position: -30px 0; /* Start from extreme left */
-          animation: moveCircuit 8s linear infinite; /* Slowed from 5s to 8s */
+          pointer-events: none;
         }
         
-        @keyframes moveCircuit {
-          0% {
-            background-position: -30px 0; /* Start from extreme left */
-          }
-          100% {
-            background-position: 0 30px;
-          }
+        /* Absolute positioned layers */
+        .circuit-board-pattern {
+          z-index: 1;
         }
         
-        /* DNA waves - SLOWER speed & extreme positions */
         .dna-waves {
-          position: absolute;
-          top: 0;
-          left: -50%; /* Extend beyond left edge */
-          width: 200%; /* Cover more than full width */
-          height: 100%;
-          background: 
-            radial-gradient(circle at 20% 30%, rgba(255, 80, 32, 0.15) 0%, rgba(255, 80, 32, 0) 50%),
-            radial-gradient(circle at 80% 70%, rgba(255, 80, 32, 0.15) 0%, rgba(255, 80, 32, 0) 50%);
-          opacity: 0.8;
-          animation: pulseDna 3s ease-in-out infinite alternate; /* Slowed from 1.5s to 3s */
+          z-index: 2;
+          left: -50%;
+          width: 200%;
         }
         
-        @keyframes pulseDna {
-          0% {
-            transform: scale(1);
-            opacity: 0.5;
-          }
-          100% {
-            transform: scale(1.1);
-            opacity: 0.8;
-          }
-        }
-        
-        /* Pulse grid - SLOWER speed & extreme positioning */
         .pulse-grid {
+          z-index: 3;
+          left: -10%;
+          width: 120%;
+        }
+        
+        /* Bottom curve without light shade */
+        .bottom-curve {
           position: absolute;
-          top: 0;
-          left: -10%; /* Extend beyond left edge */
-          width: 120%; /* Cover more than full width */
-          height: 100%;
-          background-image: 
-            linear-gradient(to right, transparent 8px, rgba(255, 80, 32, 0.05) 8px, rgba(255, 80, 32, 0.05) 12px, transparent 12px),
-            linear-gradient(to bottom, transparent 8px, rgba(255, 80, 32, 0.05) 8px, rgba(255, 80, 32, 0.05) 12px, transparent 12px);
-          background-size: 60px 60px;
-          animation: pulseGrid 2.5s linear infinite alternate; /* Slowed from 1s to 2.5s */
-        }
-        
-        @keyframes pulseGrid {
-          0% {
-            opacity: 0.3;
-            background-size: 60px 60px;
-          }
-          100% {
-            opacity: 0.7;
-            background-size: 65px 65px;
-          }
-        }
-        
-        /* Data flow lines - SLOWER & extreme left start */
-        .hero-5::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: -50px; /* Start beyond left edge */
-          width: calc(100% + 100px); /* Cover more than full width */
-          height: 100%;
-          background: 
-            linear-gradient(90deg, transparent 90%, rgba(255, 80, 32, 0.2) 100%),
-            linear-gradient(180deg, transparent 90%, rgba(255, 80, 32, 0.2) 100%);
-          background-size: 200px 200px;
-          animation: dataFlow 4s linear infinite; /* Slowed from 2s to 4s */
-          pointer-events: none;
-        }
-        
-        @keyframes dataFlow {
-          0% {
-            background-position: -200px 0; /* Start from extreme left */
-          }
-          100% {
-            background-position: 0 200px;
-          }
-        }
-        
-        /* Pulsing dots - SLOWER & full width coverage */
-        .hero-5::after {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: -20px; /* Start beyond left edge */
-          width: calc(100% + 40px); /* Cover more than full width */
-          height: 100%;
-          background-image: radial-gradient(rgba(255, 80, 32, 0.3) 1px, transparent 1px);
-          background-size: 40px 40px;
-          animation: pulseDots 1.6s ease-in-out infinite alternate; /* Slowed from 0.8s to 1.6s */
-          pointer-events: none;
-        }
-        
-        @keyframes pulseDots {
-          0% {
-            opacity: 0.3;
-          }
-          100% {
-            opacity: 0.7;
-          }
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 50px;
+          z-index: 4;
         }
         
         /* Enhanced headline styling */
@@ -267,7 +310,7 @@ const Hero = () => {
           font-weight: 900;
           position: relative;
           margin-top: 0.3rem;
-          animation: pulseText 3s infinite alternate; /* Slowed from 2s to 3s */
+          animation: pulseText 3s infinite alternate;
         }
         
         .headline-highlight::after {
@@ -290,7 +333,7 @@ const Hero = () => {
           background: radial-gradient(circle, rgba(255, 80, 32, 0.2) 0%, rgba(255, 80, 32, 0) 70%);
           filter: blur(15px);
           z-index: 1;
-          animation: moveGlow 5s infinite alternate ease-in-out; /* Slowed from 3s to 5s */
+          animation: moveGlow 5s infinite alternate ease-in-out;
         }
         
         @keyframes pulseText {
@@ -330,31 +373,64 @@ const Hero = () => {
         /* Reduced space between paragraph and buttons */
         .action-buttons {
           margin-top: 0.75rem;
+          position: relative;
+          z-index: 20;
         }
         
-        /* Calendly button styling */
-        .btn-secondary {
+        /* Simple CTA Button styling */
+        .cta-button {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          position: relative;
           background-color: #ff5020;
-          border-color: #ff5020;
           color: white;
           padding: 0.8rem 1.5rem;
           font-weight: 600;
-          font-size: 1.1rem;
+          font-size: 1rem;
+          text-transform: uppercase;
+          letter-spacing: 0.02em;
+          border-radius: 5px;
+          border: none;
+          text-decoration: none;
           box-shadow: 0 4px 15px rgba(255, 80, 32, 0.3);
           transition: all 0.3s ease;
+          cursor: pointer !important;
+          min-width: 180px;
+          outline: none;
+          z-index: 30;
+          pointer-events: auto;
         }
         
-        .btn-secondary:hover {
+        .cta-button:hover {
+          background-color: #e64016;
           transform: translateY(-3px);
           box-shadow: 0 7px 20px rgba(255, 80, 32, 0.4);
+          cursor: pointer !important;
         }
         
-        /* Calendly specific styling */
-        .calendly-btn {
-          min-width: 180px;
-          letter-spacing: 0.02em;
-          text-transform: uppercase;
-          font-size: 1rem;
+        .cta-button:active {
+          transform: translateY(1px);
+          background-color: #d03010;
+          box-shadow: 0 2px 8px rgba(255, 80, 32, 0.3);
+          cursor: pointer !important;
+        }
+        
+        .icon-wrapper {
+          margin-right: 0.75rem;
+          display: flex;
+          align-items: center;
+          font-size: 1.2em;
+          transition: transform 0.3s ease;
+          pointer-events: none;
+        }
+        
+        .cta-button:hover .icon-wrapper {
+          transform: scale(1.1);
+        }
+        
+        .cta-button:active .icon-wrapper {
+          transform: scale(0.9);
         }
         
         /* Responsive adjustments */
