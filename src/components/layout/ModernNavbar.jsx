@@ -25,7 +25,7 @@ const ModernNavbar = () => {
 
   // WhatsApp click handler
   const handleWhatsAppClick = () => {
-    window.open('https://wa.me/918197681360', '_blank');
+    window.open('https://wa.me/1(857)654-2544', '_blank');
   };
 
   return (

@@ -88,6 +88,32 @@ const DataBook = () => {
   
   // State for interactive therapeutic area hover
   const [hoveredArea, setHoveredArea] = useState(null);
+
+  // Reusable Calendly function - copy this into any component
+const openCalendly = (calendlyUrl = 'https://calendly.com/sumit-omicsbank/30min') => {
+  console.log('Opening Calendly native popup');
+  
+  // Check if Calendly widget is loaded
+  if (window.Calendly && window.Calendly.initPopupWidget) {
+    console.log('✅ Using Calendly native popup widget');
+    window.Calendly.initPopupWidget({ url: calendlyUrl });
+  } else {
+    console.log('⚠️ Calendly widget not loaded, loading it now...');
+    
+    // Load Calendly script if not already loaded
+    const script = document.createElement('script');
+    script.src = 'https://assets.calendly.com/assets/external/widget.js';
+    script.onload = () => {
+      console.log('✅ Calendly script loaded, opening popup');
+      window.Calendly.initPopupWidget({ url: calendlyUrl });
+    };
+    script.onerror = () => {
+      console.error('❌ Failed to load Calendly script');
+      alert('Failed to load Calendly. Please check your internet connection and try again.');
+    };
+    document.head.appendChild(script);
+  }
+};
   
   return (
     <section className="my-lg-5 py-5 py-sm-7 bg-gradient5 position-relative" data-aos="fade-up">
@@ -238,7 +264,7 @@ const DataBook = () => {
                     drug development, and clinical trials
                   </p>
                   
-                  <button className="btn btn-light btn-lg px-4 shadow-sm">
+                  <button className="btn btn-light btn-lg px-4 shadow-sm" onClick={() => openCalendly()}>
                     Access Sample Data
                   </button>
                 </div>
@@ -460,7 +486,7 @@ const DataBook = () => {
                   <p className="text-secondary mb-4">
                     Access comprehensive therapeutic datasets tailored to your research needs with complete patient journeys and longitudinal records.
                   </p>
-                  <button className="btn btn-primary px-4 py-2">
+                  <button className="btn btn-primary px-4 py-2" onClick={() => openCalendly()}>
                     Explore All Datasets
                   </button>
                 </div>

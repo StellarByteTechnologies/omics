@@ -161,7 +161,7 @@ const Hero = () => {
     if (window.Calendly && window.Calendly.initPopupWidget) {
       console.log('✅ Using Calendly native popup widget');
       window.Calendly.initPopupWidget({
-        url: 'https://calendly.com/shubhamshrm02/30min?back=1&month=2025-05'
+        url: 'https://calendly.com/sumit-omicsbank/30min'
       });
     } else {
       console.log('⚠️ Calendly widget not loaded, loading it now...');
