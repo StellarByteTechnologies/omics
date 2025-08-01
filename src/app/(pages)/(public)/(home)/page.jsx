@@ -20,10 +20,10 @@ const Home = () => {
         <Hero />
       </div>
       <DataAdvantage/>
-      <DataBook />
+      {/* <DataBook /> */}
       < DataOffering/>
       <RegulatedGradeData />
-      <Clients />
+      {/* <Clients /> */}
       <Features2 />
       {/* <Blogs blogs={blogPosts} /> */}
       <Footer />

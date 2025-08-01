@@ -3,7 +3,6 @@
 import { SessionProvider } from 'next-auth/react';
 import { useEffect } from 'react';
 import Aos from 'aos';
-import { NotificationProvider } from '@/context/useNotificationContext';
 const AppProvidersWrapper = ({
   children
 }) => {
@@ -20,7 +19,7 @@ const AppProvidersWrapper = ({
     }
   }, []);
   return <SessionProvider>
-      <NotificationProvider>{children}</NotificationProvider>
+      {children}
     </SessionProvider>;
 };
 export default AppProvidersWrapper;
