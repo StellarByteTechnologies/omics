@@ -287,7 +287,7 @@ const HealthSection = () => {
                       background: 'linear-gradient(135deg, #ec4899 0%, #be185d 100%)',
                       borderRadius: '50%'
                     }}></div>
-                    <span style={{ fontSize: '0.875rem', fontWeight: '600', color: '#64748b' }}>I'm Picnic.</span>
+                    {/* <span style={{ fontSize: '0.875rem', fontWeight: '600', color: '#64748b' }}>I'm Picnic.</span> */}
                   </div>
                 </div>
 
